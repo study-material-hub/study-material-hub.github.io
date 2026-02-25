@@ -1,0 +1,4835 @@
+<!DOCTYPE html>
+<html lang="hi">
+  <head>
+   <script async src="https://pagead2
+     crossorigin="anonymous"></script>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-sacale=1.0" />
+    <title>Study Material Hub</title>
+    <link
+      rel="icon"
+      type="image/png"
+      href="https://raw.githubusercontent.com/study-material-hub/study-hub/main/logo.png"
+    />
+
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"
+    />
+<script async src="https://pagead2
+     crossorigin="anonymous"></script>
+    <style>
+      :root {
+        --bg: #f1f5f9;
+        --card: #ffffff;
+        --text: #111827;
+        --header-bg: linear-gradient(135deg, #1e40af, #3b82f6);
+        --accent: linear-gradient(135deg, #1e40af, #3b82f6);
+        --border: #ddd;
+      }
+
+      body {
+        background: var(--bg);
+        color: var(--text);
+        font-family: Arial, sans-serif;
+      }
+
+      .card {
+        background: var(--card);
+        border: 1px solid var(--border);
+        padding: 15px;
+        border-radius: 8px;
+      }
+
+      header {
+        background: var(--header-bg);
+        color: #fff;
+        padding: 10px;
+      }
+      .dark {
+        --bg: #020617;
+        --card: #0f172a;
+        --text: #e5e7eb;
+        --header-bg: #111827;
+        --border: #334155;
+      }
+
+      body {
+        margin: 0;
+        font-family: "Segoe UI", Roboto, Arial, sans-serif;
+        background: var(--bg);
+        color: var(--text);
+        transition: 0.3s;
+      }
+
+      header {
+        background: var(--header-bg);
+        color: white;
+        padding: 12px 20px;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        box-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
+      }
+
+      .logo-container {
+        display: flex;
+        align-items: center;
+        gap: 12px;
+      }
+
+      .logo-img {
+        width: 50px;
+        height: 50px;
+        border-radius: 50%;
+        object-fit: cover;
+        border: 1px solid rgba(255, 255, 255, 0.3);
+      }
+
+      .site-title {
+        margin: 0;
+        font-size: 20px;
+        font-style: italic;
+        font-weight: 600;
+        letter-spacing: 0.5px;
+      }
+      .toggle-btn {
+        cursor: pointer;
+        background: rgba(255, 255, 255, 0.2);
+        border: none;
+        color: white;
+        width: 40px;
+        height: 40px;
+        border-radius: 50%;
+        font-size: 18px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+      }
+
+      main {
+        display: grid;
+        grid-template-columns: 1fr;
+        gap: 20px;
+        padding: 20px;
+        max-width: 1200px;
+        margin: auto;
+      }
+
+      @media (min-width: 768px) {
+        main {
+          grid-template-columns: 280px 1fr;
+        }
+      }
+
+      aside,
+      section {
+        background: var(--card);
+        padding: 20px;
+        border-radius: 10px;
+        box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+        border: 1px solid var(--border);
+      }
+
+      aside {
+        text-align: center;
+        height: fit-content;
+      }
+
+      .admin-title {
+        font-size: 18px;
+        font-weight: 800;
+        font-style: italic;
+        text-transform: uppercase;
+        margin-top: 15px;
+        color: var(--text);
+        cursor: pointer;
+      }
+<script async src="https://pagead2
+     crossorigin="anonymous"></script>
+      aside img.profile-pic {
+        width: 100px;
+        height: 100px;
+        border-radius: 50%;
+        border: 3px solid #000;
+        cursor: pointer;
+        background: #000;
+      }
+
+      .sidebar-box {
+        margin-top: 20px;
+        padding: 15px;
+        border-radius: 8px;
+        border: 1px solid var(--border);
+      }
+
+      .feedback-box {
+        background: #f8fafc;
+        border-left: 5px solid #1e40af;
+        cursor: pointer;
+      }
+
+      .dark .feedback-box {
+        background: #1e293b;
+      }
+
+      .contact-box {
+        background: #f0fdf4;
+        border-left: 5px solid #16a34a;
+        margin-top: 15px;
+      }
+
+      .dark .contact-box {
+        background: #064e3b;
+      }
+
+      #feedbackArea {
+        display: none;
+        margin-top: 15px;
+        text-align: left;
+      }
+
+      #feedbackText {
+        width: 100%;
+        height: 90px;
+        padding: 10px;
+        border-radius: 5px;
+        border: 1px solid #ccc;
+        font-size: 13px;
+        outline: none;
+        resize: none;
+        background: #fff;
+        color: #333;
+      }
+
+      .dark #feedbackText {
+        background: #0f172a;
+        color: #eee;
+        border-color: #334155;
+      }
+
+      .send-btn {
+        width: 100%;
+        background: #1e40af;
+        color: white;
+        border: none;
+        padding: 8px;
+        border-radius: 5px;
+        margin-top: 8px;
+        cursor: pointer;
+        font-weight: bold;
+      }
+
+      #thankYouMsg {
+        display: none;
+        color: #16a34a;
+        font-weight: bold;
+        margin-top: 10px;
+        font-size: 14px;
+      }
+      .grid-container {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+        gap: 20px;
+        margin-top: 20px;
+      }
+
+      .card {
+        background: var(--accent);
+        color: white;
+        padding: 40px 20px;
+        text-align: center;
+        border-radius: 12px;
+        cursor: pointer;
+        font-weight: bold;
+        transition: 0.3s;
+        text-transform: uppercase;
+        font-size: 16px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+      }
+
+      .card:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 6px 20px rgba(0, 0, 0, 0.2);
+      }
+
+      .book-card {
+        background: var(--card);
+        color: var(--text);
+        border: 1px solid var(--border);
+        display: flex; /* ✅ added to ensure flex works with flex-direction */
+        flex-direction: column;
+        padding: 15px;
+        gap: 10px;
+        height: auto;
+      }
+
+      .book-card img {
+        width: 100%;
+        height: 180px;
+        object-fit: contain;
+        border-radius: 5px;
+        margin-bottom: 5px;
+      }
+
+      .book-card span {
+        font-size: 15px;
+        font-weight: bold;
+        color: var(--text);
+      }
+
+      .search-box {
+        margin-bottom: 20px;
+      }
+
+      .search-box input {
+        width: 100%;
+        padding: 15px;
+        font-size: 16px;
+        border-radius: 10px;
+        border: 1px solid var(--border);
+        outline: none;
+        background: var(--card);
+        color: var(--text);
+        box-sizing: border-box;
+      }
+
+      .book-header {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 20px;
+        align-items: center;
+        margin-bottom: 25px;
+        background: var(--bg);
+        padding: 20px;
+        border-radius: 12px;
+        position: relative;
+        border: 1px solid var(--border);
+      }
+
+      .book-img {
+        width: 130px;
+        height: 180px;
+        object-fit: cover;
+        border-radius: 8px;
+        box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+      }
+
+      .book-info h2 {
+        margin: 0;
+        color: var(--text);
+        font-size: 24px;
+      }
+
+      .full-download-btn {
+        position: absolute;
+        right: 20px;
+        top: 20px;
+        background: #16a34a;
+        color: white;
+        padding: 10px 20px;
+        border-radius: 8px;
+        text-decoration: none;
+        font-weight: bold;
+        font-size: 14px;
+        display: flex;
+        align-items: center;
+        gap: 8px;
+      }
+
+      @media (max-width: 600px) {
+        .full-download-btn {
+          position: static;
+          margin-top: 10px;
+          width: 100%;
+          justify-content: center;
+        }
+      }
+
+      .chapter-list {
+        display: flex;
+        flex-direction: column;
+        gap: 12px;
+      }
+
+      .chapter-item {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 18px;
+        background: var(--card);
+        border: 1px solid var(--border);
+        border-radius: 10px;
+        transition: 0.2s;
+      }
+<script async src="https://pagead2
+     crossorigin="anonymous"></script>
+      .chapter-item:hover {
+        border-color: #3b82f6;
+        background: var(--bg);
+      }
+
+      .chapter-name {
+        font-weight: 600;
+        color: var(--text);
+        font-size: 16px;
+      }
+
+      .download-link {
+        background: #1e40af;
+        color: white;
+        padding: 10px 18px;
+        border-radius: 6px;
+        text-decoration: none;
+        font-size: 14px;
+        font-weight: bold;
+      }
+
+      .modal {
+        display: none;
+        position: fixed;
+        z-index: 100;
+        left: 0;
+        top: 0;
+        width: 100%;
+        height: 100%;
+        background: rgba(0, 0, 0, 0.8);
+        backdrop-filter: blur(5px);
+      }
+
+      .modal-content {
+        background: var(--card);
+        margin: 10% auto;
+        padding: 30px;
+        border-radius: 15px;
+        width: 85%;
+        max-width: 350px;
+        text-align: center;
+        position: relative;
+        color: var(--text);
+      }
+
+      .close-btn {
+        position: absolute;
+        right: 20px;
+        top: 10px;
+        font-size: 25px;
+        cursor: pointer;
+        color: #888;
+      }
+
+      .social-links {
+        display: flex;
+        justify-content: center;
+        gap: 15px;
+        margin-top: 20px;
+        flex-wrap: wrap;
+      }
+
+      .social-links a {
+        font-size: 28px;
+        text-decoration: none;
+      }
+    </style>
+  </head>
+
+  <body id="bodyTag" class="dark">
+    <header>
+      <div class="logo-container">
+        <img
+          src="https://raw.githubusercontent.com/study-material-hub/study-hub/main/logo.png"
+          alt="Logo"
+          class="logo-img"
+        />
+        <h2 class="site-title">Study Material Hub</h2>
+      </div>
+      <button class="toggle-btn" onclick="toggleDarkMode()">
+        <i class="fa-solid fa-sun" id="modeIcon"></i>
+      </button>
+    </header>
+
+    <main>
+      <aside>
+        <img
+          src="https://raw.githubusercontent.com/study-material-hub/study-hub/main/logo.png"
+          alt="Admin"
+          class="profile-pic"
+          onclick="openAdmin()"
+        />
+        <h3 class="admin-title" onclick="openAdmin()">ADMIN HUB</h3>
+        <p style="font-size: 14px; font-weight: bold; margin-top: 5px"></p>
+
+        <div class="sidebar-box feedback-box" onclick="toggleFeedback(event)">
+          <h4><i class="fa-solid fa-comment-dots"></i> Feedback</h4>
+          <div id="feedbackArea">
+            <form
+              id="feedbackForm"
+              action="https://formspree.io/f/xeeqaalp"
+              method="POST"
+            >
+              <textarea
+                id="feedbackText"
+                name="message"
+                onclick="event.stopPropagation()"
+              >
+Welcom to My Site. Please Send Your Feedback</textarea
+              >
+              <button
+                type="submit"
+                class="send-btn"
+                id="submitBtn"
+                onclick="event.stopPropagation()"
+              >
+                SEND
+              </button>
+            </form>
+          </div>
+          <div id="thankYouMsg">Thank You For Your Feedback!</div>
+        </div>
+
+        <div class="sidebar-box contact-box">
+          <h4><i class="fa-solid fa-address-book"></i> Contact Us</h4>
+          <div
+            class="contact-row"
+            style="display: flex; justify-content: center; gap: 25px"
+          >
+            <a href="tel:+916392893589" style="color: #2563eb; font-size: 24px"
+              ><i class="fa-solid fa-phone"></i
+            ></a>
+            <a
+              href="https://wa.me/916392893589"
+              target="_blank"
+              style="color: #16a34a; font-size: 24px"
+              ><i class="fa-brands fa-whatsapp"></i
+            ></a>
+          </div>
+        </div>
+      </aside>
+
+      <section>
+        <div id="mainSearch" class="search-box">
+          <input
+            type="text"
+            id="searchInput"
+            placeholder="Search Books/Papers..."
+            onkeyup="searchItems('#mainGrid .card', 'searchInput')"
+          />
+        </div>
+<script async src="https://pagead2
+     crossorigin="anonymous"></script>
+        <div class="grid-container" id="mainGrid">
+          <div class="card" onclick="showClasses('books')">Ncert Books Pdf</div>
+          <div class="card" onclick="showClasses('solutions')">
+            Ncert Solution
+          </div>
+          <div
+            class="card"
+            onclick="alert('Ye section abhi available nahin hai')"
+          >
+            Side Books
+          </div>
+          <div
+            class="card"
+            onclick="alert('Ye section abhi available nahin hai')"
+          >
+            Board PYQ
+          </div>
+          <div
+            class="card"
+            onclick="alert('Ye section abhi available nahin hai')"
+          >
+            NEET UG Paper
+          </div>
+          <div
+            class="card"
+            onclick="alert('Ye section abhi available nahin hai')"
+          >
+            Sample Paper
+          </div>
+        </div>
+
+        <div id="classGridArea" style="display: none">
+          <button
+            onclick="goBack('classGridArea', 'mainGrid', true)"
+            style="
+              cursor: pointer;
+              padding: 10px 20px;
+              margin-bottom: 15px;
+              background: var(--card);
+              color: var(--text);
+              border: 1px solid var(--border);
+              border-radius: 8px;
+              font-weight: bold;
+            "
+          >
+            ← Back to Menu
+          </button>
+          <div class="search-box">
+            <input
+              type="text"
+              id="classSearchInput"
+              placeholder="Search Class..."
+              onkeyup="searchItems('#classGrid .card', 'classSearchInput')"
+            />
+          </div>
+          <h3 id="classMenuTitle">Select Class</h3>
+          <div class="grid-container" id="classGrid"></div>
+        </div>
+
+        <div id="streamGridArea" style="display: none">
+          <button
+            onclick="goBack('streamGridArea', 'classGridArea')"
+            style="
+              cursor: pointer;
+              padding: 10px 20px;
+              margin-bottom: 15px;
+              background: var(--card);
+              color: var(--text);
+              border: 1px solid var(--border);
+              border-radius: 8px;
+              font-weight: bold;
+            "
+          >
+            ← Back to Classes
+          </button>
+          <h3>Select Stream</h3>
+          <div class="grid-container">
+            <div class="card bold-btn" onclick="loadSubjects('maths_stream')">
+              MATHS
+            </div>
+            <div class="card bold-btn" onclick="loadSubjects('biology_stream')">
+              BIOLOGY
+            </div>
+            <div class="card bold-btn" onclick="loadSubjects('commerce')">
+              COMMERCE
+            </div>
+            <div class="card bold-btn" onclick="loadSubjects('arts')">
+              ARTS / HUMANITIES
+            </div>
+          </div>
+        </div>
+<script async src="https://pagead2
+     crossorigin="anonymous"></script>
+        <div id="subjectGridArea" style="display: none">
+          <button
+            id="subBackBtn"
+            style="
+              cursor: pointer;
+              padding: 10px 20px;
+              margin-bottom: 15px;
+              background: var(--card);
+              color: var(--text);
+              border: 1px solid var(--border);
+              border-radius: 8px;
+              font-weight: bold;
+           <script async src="https://pagead2
+     crossorigin="anonymous"></script> "
+          >
+            ← Back
+          </button>
+          <div class="search-box">
+            <input
+              type="text"
+              id="subSearchInput"
+              placeholder="Search Subject..."
+              onkeyup="searchItems('#subjectGrid .card', 'subSearchInput')"
+            />
+          </div>
+          <h3 id="subjectMenuTitle">Select Subject</h3>
+          <div class="grid-container" id="subjectGrid"></div>
+        </div>
+
+        <div id="bookListArea" style="display: none">
+          <button
+            onclick="goBack('bookListArea', 'subjectGridArea')"
+            style="
+              cursor: pointer;
+              padding: 10px 20px;
+              margin-bottom: 15px;
+              background: var(--card);
+              color: var(--text);
+              border: 1px solid var(--border);
+              border-radius: 8px;
+              font-weight: bold;
+            "
+          ><script async src="https://pagead2
+     crossorigin="anonymous"></script>
+            ← Back to Subjects
+          </button>
+          <h3 id="bookMenuTitle">Select Specific Book</h3>
+          <div class="grid-container" id="bookGrid"></div>
+        </div>
+
+        <div id="chapterViewArea" style="display: none">
+          <button
+            id="chapterBackBtn"
+            style="
+              cursor: pointer;
+              padding: 10px 20px;
+              margin-bottom: 15px;
+              background: var(--card);
+              color: var(--text);
+              border: 1px solid var(--border);
+              border-radius: 8px;
+              font-weight: bold;
+            "
+          >
+            ← Back
+          </button>
+          <div class="book-header">
+            <img id="bookCover" src="logo.png" class="book-img" />
+            <div class="book-info">
+              <h2 id="displayBookName">Book Name</h2>
+              <p
+                id="displayClassInfo"
+                style="font-weight: bold; opacity: 0.8"
+              ></p>
+            </div>
+            <a
+              href="#"
+              id="fullBookLink"
+              class="full-download-btn"
+              target="_blank"
+              ><i class="fa-solid fa-download"></i> FULL BOOK</a
+            >
+          </div>
+          <div class="chapter-list" id="chapterList"></div>
+        </div>
+      </section>
+    </main>
+<script async src="https://pagead2
+     crossorigin="anonymous"></script>
+    <div id="adminModal" class="modal">
+      <div class="modal-content">
+        <span class="close-btn" onclick="closeAdmin()">&times;</span>
+        <img
+          src="logo.png"
+          style="
+            width: 80px;
+            height: 80px;
+            border-radius: 50%;
+            border: 2px solid #000;
+            background: #000;
+          "
+        />
+        <h2>Himanshu Chaudhary</h2>
+        <div class="social-links">
+          <a
+            href="https://www.instagram.com/_x_ji_himanshu/"
+            target="_blank"
+            style="color: #e1306c"
+            ><i class="fa-brands fa-instagram"></i
+          ></a>
+          <a href="mailto:hc870229@gmail.com" style="color: #d44638"
+            ><i class="fa-solid fa-envelope"></i
+          ></a>
+          <a
+            href="https://t.me/himanshu_chaudhary_51"
+            target="_blank"
+            style="color: #0088cc"
+            ><i class="fa-brands fa-telegram"></i
+          ></a>
+          <a
+            href="https://www.facebook.com/profile.php?id=61563877376412"
+            target="_blank"
+            style="color: #1877f2"
+            ><i class="fa-brands fa-facebook"></i
+          ></a>
+        </div>
+      </div>
+    </div>
+
+    <script>
+      let selCategory = "",
+        selClass = "";
+
+      // CLASS-WISE SUBJECTS
+      const subjectsByClass = {
+        1: ["Hindi", "English", "Maths", "EVS"],
+        2: ["Hindi", "English", "Maths", "EVS"],
+        3: ["Hindi", "English", "Maths", "EVS"],
+        4: ["Hindi", "English", "Maths", "EVS"],
+        5: ["Hindi", "English", "Maths", "EVS"],
+        6: ["Hindi", "English", "Maths", "Science", "SST"],
+        7: ["Hindi", "English", "Maths", "Science", "SST"],
+        8: ["Hindi", "English", "Maths", "Science", "SST"],
+        9: ["Hindi", "English", "Maths", "Science", "SST"],
+        10: ["Hindi", "English", "Maths", "Science", "SST"],
+        11: ["Hindi", "English", "Maths", "Physics", "Chemistry", "Biology"],
+        12: ["Hindi", "English", "Maths", "Physics", "Chemistry", "Biology"],
+      };
+
+      // BOOK DATABASE – CLASS 1 COMPLETELY READY TEMPLATE
+      const bookDatabase = {
+        // CLASS 1 HINDI – Rimjhim 1
+        "1_Hindi": [
+          {
+            name: "Rimjhim – 1 (Hindi)",
+            img: "https://ncert.nic.in/textbook/pdf/chhj1cc.jpg",
+            full: "https://ncert.nic.in/textbook/pdf/chhj1.pdf",
+            chapters: [
+              {
+                chName: "पाठ 1: झूला",
+                link: "https://ncert.nic.in/textbook/pdf/chhj101.pdf",
+              },
+              {
+                chName: "पाठ 2: आम की कहानी",
+                link: "https://ncert.nic.in/textbook/pdf/chhj102.pdf",
+              },
+              {
+                chName: "पाठ 3: आम की टोकरी",
+                link: "https://ncert.nic.in/textbook/pdf/chhj103.pdf",
+              },
+              {
+                chName: "पाठ 4: पत्ते ही पत्ते",
+                link: "https://ncert.nic.in/textbook/pdf/chhj104.pdf",
+              },
+              {
+                chName: "पाठ 5: पकौड़ी",
+                link: "https://ncert.nic.in/textbook/pdf/chhj105.pdf",
+              },
+              {
+                chName: "पाठ 6: छुक-छुक गाड़ी",
+                link: "https://ncert.nic.in/textbook/pdf/chhj106.pdf",
+              },
+              {
+                chName: "पाठ 7: रसोईघर",
+                link: "https://ncert.nic.in/textbook/pdf/chhj107.pdf",
+              },
+              {
+                chName: "पाठ 8: चूहो! मियाँ सो जा",
+                link: "https://ncert.nic.in/textbook/pdf/chhj108.pdf",
+              },
+              {
+                chName: "पाठ 9: बंदर और गिलहरी",
+                link: "https://ncert.nic.in/textbook/pdf/chhj109.pdf",
+              },
+              {
+                chName: "पाठ 10: पगड़ी",
+                link: "https://ncert.nic.in/textbook/pdf/chhj110.pdf",
+              },
+              {
+                chName: "पाठ 11: पतंग",
+                link: "https://ncert.nic.in/textbook/pdf/chhj111.pdf",
+              },
+              {
+                chName: "पाठ 12: गेंद-बल्ला",
+                link: "https://ncert.nic.in/textbook/pdf/chhj112.pdf",
+              },
+              {
+                chName: "पाठ 13: बंदर गया खेत में भाग",
+                link: "https://ncert.nic.in/textbook/pdf/chhj113.pdf",
+              },
+              {
+                chName: "पाठ 14: एक बुढ़िया",
+                link: "https://ncert.nic.in/textbook/pdf/chhj114.pdf",
+              },
+              {
+                chName: "पाठ 15: मैं भी",
+                link: "https://ncert.nic.in/textbook/pdf/chhj115.pdf",
+              },
+              {
+                chName: "पाठ 16: लालू और पीलू",
+                link: "https://ncert.nic.in/textbook/pdf/chhj116.pdf",
+              },
+              {
+                chName: "पाठ 17: चकई के चकदुम",
+                link: "https://ncert.nic.in/textbook/pdf/chhj117.pdf",
+              },
+              {
+                chName: "पाठ 18: छोटी का कमाल",
+                link: "https://ncert.nic.in/textbook/pdf/chhj118.pdf",
+              },
+              {
+                chName: "पाठ 19: चार चने",
+                link: "https://ncert.nic.in/textbook/pdf/chhj119.pdf",
+              },
+              {
+                chName: "पाठ 20: भगदड़",
+                link: "https://ncert.nic.in/textbook/pdf/chhj120.pdf",
+              },
+              {
+                chName: "पाठ 21: हलीम चला चाँद पर",
+                link: "https://ncert.nic.in/textbook/pdf/chhj121.pdf",
+              },
+              {
+                chName: "पाठ 22: हाथी चल्लम चल्लम",
+                link: "https://ncert.nic.in/textbook/pdf/chhj122.pdf",
+              },
+              {
+                chName: "पाठ 23: सात पूँछ वाला चूहा",
+                link: "https://ncert.nic.in/textbook/pdf/chhj123.pdf",
+              },
+            ],
+          },
+        ],
+
+        // CLASS 1 ENGLISH – Marigold 1
+        "1_English": [
+          {
+            name: "Marigold – 1  (English)",
+            img: "https://ncert.nic.in/textbook/pdf/aemr1cc.jpg",
+            full: "https://ncert.nic.in/textbook/pdf/aemr1.pdf",
+            chapters: [
+              {
+                chName: "Unit 1: A Happy Child / Three Little Pigs",
+                link: "https://ncert.nic.in/textbook/pdf/aemr101.pdf",
+              },
+              {
+                chName:
+                  "Unit 2: After a Bath / The Bubble, the Straw and the Shoe",
+                link: "https://ncert.nic.in/textbook/pdf/aemr102.pdf",
+              },
+              {
+                chName: "Unit 3: One Little Kitten / Lalu and Peelu",
+                link: "https://ncert.nic.in/textbook/pdf/aemr103.pdf",
+              },
+              {
+                chName:
+                  "Unit 4: Once I Saw a Little Bird / Mittu and the Yellow Mango",
+                link: "https://ncert.nic.in/textbook/pdf/aemr104.pdf",
+              },
+              {
+                chName: "Unit 5: Merry-Go-Round / Circle",
+                link: "https://ncert.nic.in/textbook/pdf/aemr105.pdf",
+              },
+              {
+                chName: "Unit 6: If I Were an Apple / Our Tree",
+                link: "https://ncert.nic.in/textbook/pdf/aemr106.pdf",
+              },
+              {
+                chName: "Unit 7: A Kite / Sundari",
+                link: "https://ncert.nic.in/textbook/pdf/aemr107.pdf",
+              },
+              {
+                chName: "Unit 8: A Little Turtle / The Tiger and the Mosquito",
+                link: "https://ncert.nic.in/textbook/pdf/aemr108.pdf",
+              },
+              {
+                chName: "Unit 9: Clouds / Anandi’s Rainbow",
+                link: "https://ncert.nic.in/textbook/pdf/aemr109.pdf",
+              },
+              {
+                chName: "Unit 10: Flying-man / The Tailor and his Friend",
+                link: "https://ncert.nic.in/textbook/pdf/aemr110.pdf",
+              },
+            ],
+          },
+        ],
+
+        // CLASS 1 MATHS – Maths Magic 1
+        "1_Maths": [
+          {
+            name: "Maths Magic – 1",
+            img: "https://ncert.nic.in/textbook/pdf/aemh1cc.jpg",
+            full: "https://ncert.nic.in/textbook/pdf/aemh1.pdf",
+            chapters: [
+              {
+                chName: "1: Shapes and Space",
+                link: "https://ncert.nic.in/textbook/pdf/aemh101.pdf",
+              },
+              {
+                chName: "2: Numbers from 1 to 9",
+                link: "https://ncert.nic.in/textbook/pdf/aemh102.pdf",
+              },
+              {
+                chName: "3: Addition",
+                link: "https://ncert.nic.in/textbook/pdf/aemh103.pdf",
+              },
+              {
+                chName: "4: Subtraction",
+                link: "https://ncert.nic.in/textbook/pdf/aemh104.pdf",
+              },
+              {
+                chName: "5: Numbers from 10 to 20",
+                link: "https://ncert.nic.in/textbook/pdf/aemh105.pdf",
+              },
+              {
+                chName: "6: Time",
+                link: "https://ncert.nic.in/textbook/pdf/aemh106.pdf",
+              },
+              {
+                chName: "7: Measurement",
+                link: "https://ncert.nic.in/textbook/pdf/aemh107.pdf",
+              },
+              {
+                chName: "8: Numbers from 21 to 50",
+                link: "https://ncert.nic.in/textbook/pdf/aemh108.pdf",
+              },
+              {
+                chName: "9: Data Handling",
+                link: "https://ncert.nic.in/textbook/pdf/aemh109.pdf",
+              },
+              {
+                chName: "10: Patterns",
+                link: "https://ncert.nic.in/textbook/pdf/aemh110.pdf",
+              },
+              {
+                chName: "11: Numbers from 51 to 100",
+                link: "https://ncert.nic.in/textbook/pdf/aemh111.pdf",
+              },
+              {
+                chName: "12: Money",
+                link: "https://ncert.nic.in/textbook/pdf/aemh112.pdf",
+              },
+              {
+                chName: "13: How Many",
+                link: "https://ncert.nic.in/textbook/pdf/aemh113.pdf",
+              },
+            ],
+          },
+        ],
+
+        // CLASS 1 EVS / Raindrops 1
+        "1_EVS": [
+          {
+            name: "Raindrops – 1",
+            img: "https://ncert.nic.in/textbook/pdf/aerd1cc.jpg",
+            full: "https://ncert.nic.in/textbook/pdf/aerd1.pdf",
+            chapters: [
+              {
+                chName: "1: Clap, Clap, Clap",
+                link: "https://ncert.nic.in/textbook/pdf/aerd101.pdf",
+              },
+              {
+                chName: "2: One, Two",
+                link: "https://ncert.nic.in/textbook/pdf/aerd102.pdf",
+              },
+              {
+                chName: "3: The Little Bird",
+                link: "https://ncert.nic.in/textbook/pdf/aerd103.pdf",
+              },
+              {
+                chName: "4: Bubbles",
+                link: "https://ncert.nic.in/textbook/pdf/aerd104.pdf",
+              },
+              {
+                chName: "5: Chhotu",
+                link: "https://ncert.nic.in/textbook/pdf/aerd105.pdf",
+              },
+              {
+                chName: "6: Animals and Birds",
+                link: "https://ncert.nic.in/textbook/pdf/aerd106.pdf",
+              },
+              {
+                chName: "7: Fruits and Vegetables",
+                link: "https://ncert.nic.in/textbook/pdf/aerd107.pdf",
+              },
+              {
+                chName: "8: Who Am I?",
+                link: "https://ncert.nic.in/textbook/pdf/aerd108.pdf",
+              },
+              {
+                chName: "9: Hide and Seek",
+                link: "https://ncert.nic.in/textbook/pdf/aerd109.pdf",
+              },
+              {
+                chName: "10: Fun with Numbers",
+                link: "https://ncert.nic.in/textbook/pdf/aerd110.pdf",
+              },
+              {
+                chName: "11: Shapes",
+                link: "https://ncert.nic.in/textbook/pdf/aerd111.pdf",
+              },
+              {
+                chName: "12: Cats",
+                link: "https://ncert.nic.in/textbook/pdf/aerd112.pdf",
+              },
+              {
+                chName: "13: Colours",
+                link: "https://ncert.nic.in/textbook/pdf/aerd113.pdf",
+              },
+              {
+                chName: "14: Actions We Do",
+                link: "https://ncert.nic.in/textbook/pdf/aerd114.pdf",
+              },
+              {
+                chName: "15: Left and Right",
+                link: "https://ncert.nic.in/textbook/pdf/aerd115.pdf",
+              },
+              {
+                chName: "16: The Lion and the Mouse",
+                link: "https://ncert.nic.in/textbook/pdf/aerd116.pdf",
+              },
+              {
+                chName: "17: Morning and Evening",
+                link: "https://ncert.nic.in/textbook/pdf/aerd117.pdf",
+              },
+              {
+                chName: "18: May I Come In?",
+                link: "https://ncert.nic.in/textbook/pdf/aerd118.pdf",
+              },
+              {
+                chName: "19: Action Song",
+                link: "https://ncert.nic.in/textbook/pdf/aerd119.pdf",
+              },
+            ],
+          },
+        ],
+        // CLASS 2 HINDI – Rimjhim 2
+        "2_Hindi": [
+          {
+            name: "Rimjhim – 2 (Hindi)",
+            img: "https://ncert.nic.in/textbook/pdf/bhhn2cc.jpg",
+            full: "https://ncert.nic.in/textbook/pdf/bhhn2.pdf",
+            chapters: [
+              {
+                chName: "पाठ 1: ऊँट चला",
+                link: "https://ncert.nic.in/textbook/pdf/bhhn201.pdf",
+              },
+              {
+                chName: "पाठ 2: भालू ने खेली फुटबॉल",
+                link: "https://ncert.nic.in/textbook/pdf/bhhn202.pdf",
+              },
+              {
+                chName: "पाठ 3: म्याऊँ, म्याऊँ !!",
+                link: "https://ncert.nic.in/textbook/pdf/bhhn203.pdf",
+              },
+              {
+                chName: "पाठ 4: अधिक बलवान कौन?",
+                link: "https://ncert.nic.in/textbook/pdf/bhhn204.pdf",
+              },
+              {
+                chName: "पाठ 5: दोस्त की मदद",
+                link: "https://ncert.nic.in/textbook/pdf/bhhn205.pdf",
+              },
+              {
+                chName: "पाठ 6: बहुत हुआ",
+                link: "https://ncert.nic.in/textbook/pdf/bhhn206.pdf",
+              },
+              {
+                chName: "पाठ 7: मेरी किताब",
+                link: "https://ncert.nic.in/textbook/pdf/bhhn207.pdf",
+              },
+              {
+                chName: "पाठ 8: तितली और कली",
+                link: "https://ncert.nic.in/textbook/pdf/bhhn208.pdf",
+              },
+              {
+                chName: "पाठ 9: बुलबुल",
+                link: "https://ncert.nic.in/textbook/pdf/bhhn209.pdf",
+              },
+              {
+                chName: "पाठ 10: मीठी सारंगी",
+                link: "https://ncert.nic.in/textbook/pdf/bhhn210.pdf",
+              },
+              {
+                chName: "पाठ 11: टेसू राजा बीच बाजार",
+                link: "https://ncert.nic.in/textbook/pdf/bhhn211.pdf",
+              },
+              {
+                chName: "पाठ 12: बस के नीचे बाघ",
+                link: "https://ncert.nic.in/textbook/pdf/bhhn212.pdf",
+              },
+              {
+                chName: "पाठ 13: सूरज जल्दी आना जी",
+                link: "https://ncert.nic.in/textbook/pdf/bhhn213.pdf",
+              },
+              {
+                chName: "पाठ 14: नटखट चूहा",
+                link: "https://ncert.nic.in/textbook/pdf/bhhn214.pdf",
+              },
+              {
+                chName: "पाठ 15: एक्की-दोक्की",
+                link: "https://ncert.nic.in/textbook/pdf/bhhn215.pdf",
+              },
+            ],
+          },
+        ],
+
+        // CLASS 2 ENGLISH – Marigold 2
+        "2_English": [
+          {
+            name: "Marigold – 2 (English)",
+            img: "https://ncert.nic.in/textbook/pdf/aemr2cc.jpg",
+            full: "https://ncert.nic.in/textbook/pdf/aemr2.pdf",
+            chapters: [
+              {
+                chName: "Unit 1: First Day at School / Haldi's Adventure",
+                link: "https://ncert.nic.in/textbook/pdf/aemr201.pdf",
+              },
+              {
+                chName: "Unit 2: I am Lucky! / I Want",
+                link: "https://ncert.nic.in/textbook/pdf/aemr202.pdf",
+              },
+              {
+                chName: "Unit 3: A Smile / The Wind and the Sun",
+                link: "https://ncert.nic.in/textbook/pdf/aemr203.pdf",
+              },
+              {
+                chName: "Unit 4: Rain / Storm in the Garden",
+                link: "https://ncert.nic.in/textbook/pdf/aemr204.pdf",
+              },
+              {
+                chName: "Unit 5: Zoo Manners / Funny Bunny",
+                link: "https://ncert.nic.in/textbook/pdf/aemr205.pdf",
+              },
+              {
+                chName: "Unit 6: Mr. Nobody / Curlylocks and the Three Bears",
+                link: "https://ncert.nic.in/textbook/pdf/aemr206.pdf",
+              },
+              {
+                chName: "Unit 7: On My Blackboard I can Draw / Make it Shorter",
+                link: "https://ncert.nic.in/textbook/pdf/aemr207.pdf",
+              },
+              {
+                chName: "Unit 8: I am the Music Man / The Mumbai Musicians",
+                link: "https://ncert.nic.in/textbook/pdf/aemr208.pdf",
+              },
+              {
+                chName:
+                  "Unit 9: Granny Granny Please Comb my Hair / The Magic Porridge Pot",
+                link: "https://ncert.nic.in/textbook/pdf/aemr209.pdf",
+              },
+              {
+                chName: "Unit 10: Strange Talk / The Grasshopper and the Ant",
+                link: "https://ncert.nic.in/textbook/pdf/aemr210.pdf",
+              },
+            ],
+          },
+        ],
+
+        // CLASS 2 MATHS – Maths Magic 2
+        "2_Maths": [
+          {
+            name: "Maths Magic – 2",
+            img: "https://ncert.nic.in/textbook/pdf/aemh2cc.jpg",
+            full: "https://ncert.nic.in/textbook/pdf/aemh2.pdf",
+            chapters: [
+              {
+                chName: "1: What is Long, What is Round?",
+                link: "https://ncert.nic.in/textbook/pdf/aemh201.pdf",
+              },
+              {
+                chName: "2: Counting in Groups",
+                link: "https://ncert.nic.in/textbook/pdf/aemh202.pdf",
+              },
+              {
+                chName: "3: How Much Can You Carry?",
+                link: "https://ncert.nic.in/textbook/pdf/aemh203.pdf",
+              },
+              {
+                chName: "4: Counting in Tens",
+                link: "https://ncert.nic.in/textbook/pdf/aemh204.pdf",
+              },
+              {
+                chName: "5: Patterns",
+                link: "https://ncert.nic.in/textbook/pdf/aemh205.pdf",
+              },
+              {
+                chName: "6: Footprints",
+                link: "https://ncert.nic.in/textbook/pdf/aemh206.pdf",
+              },
+              {
+                chName: "7: Jugs and Mugs",
+                link: "https://ncert.nic.in/textbook/pdf/aemh207.pdf",
+              },
+              {
+                chName: "8: Tens and Ones",
+                link: "https://ncert.nic.in/textbook/pdf/aemh208.pdf",
+              },
+              {
+                chName: "9: My Funday",
+                link: "https://ncert.nic.in/textbook/pdf/aemh209.pdf",
+              },
+              {
+                chName: "10: Add our Points",
+                link: "https://ncert.nic.in/textbook/pdf/aemh210.pdf",
+              },
+              {
+                chName: "11: Lines and Lines",
+                link: "https://ncert.nic.in/textbook/pdf/aemh211.pdf",
+              },
+              {
+                chName: "12: Give and Take",
+                link: "https://ncert.nic.in/textbook/pdf/aemh212.pdf",
+              },
+              {
+                chName: "13: The Longest Step",
+                link: "https://ncert.nic.in/textbook/pdf/aemh213.pdf",
+              },
+              {
+                chName: "14: Birds Come, Birds Go",
+                link: "https://ncert.nic.in/textbook/pdf/aemh214.pdf",
+              },
+              {
+                chName: "15: How Many Ponytails?",
+                link: "https://ncert.nic.in/textbook/pdf/aemh215.pdf",
+              },
+            ],
+          },
+        ],
+
+        // CLASS 2 EVS – Raindrops 2
+        "2_EVS": [
+          {
+            name: "Raindrops – 2",
+            img: "https://ncert.nic.in/textbook/pdf/aerd2cc.jpg",
+            full: "https://ncert.nic.in/textbook/pdf/aerd2.pdf",
+            chapters: [
+              {
+                chName: "1: Action Song (Poem)",
+                link: "https://ncert.nic.in/textbook/pdf/aerd201.pdf",
+              },
+              {
+                chName: "2: Our Day",
+                link: "https://ncert.nic.in/textbook/pdf/aerd202.pdf",
+              },
+              {
+                chName: "3: My Family",
+                link: "https://ncert.nic.in/textbook/pdf/aerd203.pdf",
+              },
+              {
+                chName: "4: What's Going On?",
+                link: "https://ncert.nic.in/textbook/pdf/aerd204.pdf",
+              },
+              {
+                chName: "5: Mohan, The Potter",
+                link: "https://ncert.nic.in/textbook/pdf/aerd205.pdf",
+              },
+              {
+                chName: "6: Rain in Summer (Poem)",
+                link: "https://ncert.nic.in/textbook/pdf/aerd206.pdf",
+              },
+              {
+                chName: "7: My Village",
+                link: "https://ncert.nic.in/textbook/pdf/aerd207.pdf",
+              },
+              {
+                chName: "8: The Work People Do",
+                link: "https://ncert.nic.in/textbook/pdf/aerd208.pdf",
+              },
+              {
+                chName: "9: Work (Poem)",
+                link: "https://ncert.nic.in/textbook/pdf/aerd209.pdf",
+              },
+              {
+                chName: "10: Our National Symbols",
+                link: "https://ncert.nic.in/textbook/pdf/aerd210.pdf",
+              },
+              {
+                chName: "11: The Festivals of India",
+                link: "https://ncert.nic.in/textbook/pdf/aerd211.pdf",
+              },
+              {
+                chName: "12: The Monkey and The Elephant",
+                link: "https://ncert.nic.in/textbook/pdf/aerd212.pdf",
+              },
+              {
+                chName: "13: Going to the Fair",
+                link: "https://ncert.nic.in/textbook/pdf/aerd213.pdf",
+              },
+              {
+                chName: "14: Colours (Poem)",
+                link: "https://ncert.nic.in/textbook/pdf/aerd214.pdf",
+              },
+              {
+                chName: "15: Sikkim",
+                link: "https://ncert.nic.in/textbook/pdf/aerd215.pdf",
+              },
+            ],
+          },
+        ],
+
+        // CLASS 3 HINDI – Rimjhim 3
+        "3_Hindi": [
+          {
+            name: "Rimjhim – 3 (Hindi)",
+            img: "https://ncert.nic.in/textbook/pdf/chhj3cc.jpg",
+            full: "https://ncert.nic.in/textbook/pdf/chhj3.pdf",
+            chapters: [
+              {
+                chName: "पाठ 1: तीन छोटे चूहे",
+                link: "https://ncert.nic.in/textbook/pdf/chhj301.pdf",
+              },
+              {
+                chName: "पाठ 2: हवा का झोंका",
+                link: "https://ncert.nic.in/textbook/pdf/chhj302.pdf",
+              },
+              {
+                chName: "पाठ 3: काली शंख",
+                link: "https://ncert.nic.in/textbook/pdf/chhj303.pdf",
+              },
+              {
+                chName: "पाठ 4: लालची कौआ",
+                link: "https://ncert.nic.in/textbook/pdf/chhj304.pdf",
+              },
+              {
+                chName: "पाठ 5: चंदा मामा",
+                link: "https://ncert.nic.in/textbook/pdf/chhj305.pdf",
+              },
+              {
+                chName: "पाठ 6: मछली",
+                link: "https://ncert.nic.in/textbook/pdf/chhj306.pdf",
+              },
+              {
+                chName: "पाठ 7: रसोई का जादू",
+                link: "https://ncert.nic.in/textbook/pdf/chhj307.pdf",
+              },
+              {
+                chName: "पाठ 8: मेरी छोटी दादी",
+                link: "https://ncert.nic.in/textbook/pdf/chhj308.pdf",
+              },
+              {
+                chName: "पाठ 9: मेरा घर",
+                link: "https://ncert.nic.in/textbook/pdf/chhj309.pdf",
+              },
+              {
+                chName: "पाठ 10: मेरा परिवार",
+                link: "https://ncert.nic.in/textbook/pdf/chhj310.pdf",
+              },
+              {
+                chName: "पाठ 11: सात रंगी पतंग",
+                link: "https://ncert.nic.in/textbook/pdf/chhj311.pdf",
+              },
+              {
+                chName: "पाठ 12: रस्सी कूद",
+                link: "https://ncert.nic.in/textbook/pdf/chhj312.pdf",
+              },
+              {
+                chName: "पाठ 13: चाँद की चाँदनी",
+                link: "https://ncert.nic.in/textbook/pdf/chhj313.pdf",
+              },
+              {
+                chName: "पाठ 14: पूँजी",
+                link: "https://ncert.nic.in/textbook/pdf/chhj314.pdf",
+              },
+              {
+                chName: "पाठ 15: कौन-कौन आया मेरे घर?",
+                link: "https://ncert.nic.in/textbook/pdf/chhj315.pdf",
+              },
+              {
+                chName: "पाठ 16: हरी मिर्चियाँ",
+                link: "https://ncert.nic.in/textbook/pdf/chhj316.pdf",
+              },
+              {
+                chName: "पाठ 17: हाथी राजा",
+                link: "https://ncert.nic.in/textbook/pdf/chhj317.pdf",
+              },
+            ],
+          },
+        ],
+
+        // CLASS 3 ENGLISH – Marigold 3
+        "3_English": [
+          {
+            name: "Marigold – 3 (English)",
+            img: "https://ncert.nic.in/textbook/pdf/aemr3cc.jpg",
+            full: "https://ncert.nic.in/textbook/pdf/aemr3.pdf",
+            chapters: [
+              {
+                chName: "Poem 1: Good Morning",
+                link: "https://ncert.nic.in/textbook/pdf/aemr301.pdf",
+              },
+              {
+                chName: "Poem 2: A Little Turtle",
+                link: "https://ncert.nic.in/textbook/pdf/aemr302.pdf",
+              },
+              {
+                chName: "Story 1: The Ant and The Grasshopper",
+                link: "https://ncert.nic.in/textbook/pdf/aemr303.pdf",
+              },
+              {
+                chName: "Poem 3: Sea Song",
+                link: "https://ncert.nic.in/textbook/pdf/aemr304.pdf",
+              },
+              {
+                chName: "Story 2: The Fox and The Crow",
+                link: "https://ncert.nic.in/textbook/pdf/aemr305.pdf",
+              },
+              {
+                chName: "Poem 4: Little Pebble",
+                link: "https://ncert.nic.in/textbook/pdf/aemr306.pdf",
+              },
+              {
+                chName: "Story 3: Niko and the Tsunami",
+                link: "https://ncert.nic.in/textbook/pdf/aemr307.pdf",
+              },
+              {
+                chName: "Poem 5: Bird Talk",
+                link: "https://ncert.nic.in/textbook/pdf/aemr308.pdf",
+              },
+              {
+                chName: "Story 4: The Monkey and the Crocodile",
+                link: "https://ncert.nic.in/textbook/pdf/aemr309.pdf",
+              },
+              {
+                chName: "Poem 6: Mimi The Wizard",
+                link: "https://ncert.nic.in/textbook/pdf/aemr310.pdf",
+              },
+              {
+                chName: "Story 5: The Greedy Milkman",
+                link: "https://ncert.nic.in/textbook/pdf/aemr311.pdf",
+              },
+            ],
+          },
+        ],
+
+        // CLASS 3 MATHS – Maths Magic 3
+        "3_Maths": [
+          {
+            name: "Maths Magic – 3",
+            img: "https://ncert.nic.in/textbook/pdf/aemh3cc.jpg",
+            full: "https://ncert.nic.in/textbook/pdf/aemh3.pdf",
+            chapters: [
+              {
+                chName: "1: Where to Look From",
+                link: "https://ncert.nic.in/textbook/pdf/aemh301.pdf",
+              },
+              {
+                chName: "2: Fun with Numbers",
+                link: "https://ncert.nic.in/textbook/pdf/aemh302.pdf",
+              },
+              {
+                chName: "3: Give and Take",
+                link: "https://ncert.nic.in/textbook/pdf/aemh303.pdf",
+              },
+              {
+                chName: "4: Long and Short",
+                link: "https://ncert.nic.in/textbook/pdf/aemh304.pdf",
+              },
+              {
+                chName: "5: Shapes around Us",
+                link: "https://ncert.nic.in/textbook/pdf/aemh305.pdf",
+              },
+              {
+                chName: "6: Smart Charts",
+                link: "https://ncert.nic.in/textbook/pdf/aemh306.pdf",
+              },
+              {
+                chName: "7: Rupees and Paise",
+                link: "https://ncert.nic.in/textbook/pdf/aemh307.pdf",
+              },
+              {
+                chName: "8: More on Shapes",
+                link: "https://ncert.nic.in/textbook/pdf/aemh308.pdf",
+              },
+              {
+                chName: "9: Patterns",
+                link: "https://ncert.nic.in/textbook/pdf/aemh309.pdf",
+              },
+              {
+                chName: "10: Time Goes On",
+                link: "https://ncert.nic.in/textbook/pdf/aemh310.pdf",
+              },
+              {
+                chName: "11: Who is Heavier?",
+                link: "https://ncert.nic.in/textbook/pdf/aemh311.pdf",
+              },
+            ],
+          },
+        ],
+
+        // CLASS 3 EVS – Looking Around 3
+        "3_EVS": [
+          {
+            name: "Looking Around – 3",
+            img: "https://ncert.nic.in/textbook/pdf/aeen3cc.jpg",
+            full: "https://ncert.nic.in/textbook/pdf/aeen3.pdf",
+            chapters: [
+              {
+                chName: "1: Poonam’s Day Out",
+                link: "https://ncert.nic.in/textbook/pdf/aeen301.pdf",
+              },
+              {
+                chName: "2: The Plant Fairy",
+                link: "https://ncert.nic.in/textbook/pdf/aeen302.pdf",
+              },
+              {
+                chName: "3: The Story of the Banyan Tree",
+                link: "https://ncert.nic.in/textbook/pdf/aeen303.pdf",
+              },
+              {
+                chName: "4: Tiny Drops of Water",
+                link: "https://ncert.nic.in/textbook/pdf/aeen304.pdf",
+              },
+              {
+                chName: "5: Stones and Fossils",
+                link: "https://ncert.nic.in/textbook/pdf/aeen305.pdf",
+              },
+              {
+                chName: "6: Saying without Speaking",
+                link: "https://ncert.nic.in/textbook/pdf/aeen306.pdf",
+              },
+              {
+                chName: "7: Food Comes from Where?",
+                link: "https://ncert.nic.in/textbook/pdf/aeen307.pdf",
+              },
+              {
+                chName: "8: The House We Live In",
+                link: "https://ncert.nic.in/textbook/pdf/aeen308.pdf",
+              },
+              {
+                chName: "9: A Day with Nitu",
+                link: "https://ncert.nic.in/textbook/pdf/aeen309.pdf",
+              },
+              {
+                chName: "10: Our First School",
+                link: "https://ncert.nic.in/textbook/pdf/aeen310.pdf",
+              },
+              {
+                chName: "11: Whose Food is This?",
+                link: "https://ncert.nic.in/textbook/pdf/aeen311.pdf",
+              },
+              {
+                chName: "12: When it Rains",
+                link: "https://ncert.nic.in/textbook/pdf/aeen312.pdf",
+              },
+              {
+                chName: "13: A Snake Charmer's Story",
+                link: "https://ncert.nic.in/textbook/pdf/aeen313.pdf",
+              },
+              {
+                chName: "14: A Busy Month",
+                link: "https://ncert.nic.in/textbook/pdf/aeen314.pdf",
+              },
+              {
+                chName: "15: Mr. Nobody's House",
+                link: "https://ncert.nic.in/textbook/pdf/aeen315.pdf",
+              },
+              {
+                chName: "16: Crossing the Road",
+                link: "https://ncert.nic.in/textbook/pdf/aeen316.pdf",
+              },
+              {
+                chName: "17: A New House",
+                link: "https://ncert.nic.in/textbook/pdf/aeen317.pdf",
+              },
+              {
+                chName: "18: From Here to There",
+                link: "https://ncert.nic.in/textbook/pdf/aeen318.pdf",
+              },
+              {
+                chName: "19: Three Meals a Day",
+                link: "https://ncert.nic.in/textbook/pdf/aeen319.pdf",
+              },
+              {
+                chName: "20: A Beautiful Cloth",
+                link: "https://ncert.nic.in/textbook/pdf/aeen320.pdf",
+              },
+              {
+                chName: "21: Mr. Nobody",
+                link: "https://ncert.nic.in/textbook/pdf/aeen321.pdf",
+              },
+              {
+                chName: "22: A Rainy Day",
+                link: "https://ncert.nic.in/textbook/pdf/aeen322.pdf",
+              },
+              {
+                chName: "23: A Little Fishy",
+                link: "https://ncert.nic.in/textbook/pdf/aeen323.pdf",
+              },
+              {
+                chName: "24: Mr. Sunita in Space",
+                link: "https://ncert.nic.in/textbook/pdf/aeen324.pdf",
+              },
+            ],
+          },
+        ],
+        // CLASS 4 HINDI – Rimjhim 4
+        "4_Hindi": [
+          {
+            name: "Rimjhim – 4 (Hindi)",
+            img: "https://ncert.nic.in/textbook/pdf/chhj4cc.jpg",
+            full: "https://ncert.nic.in/textbook/pdf/chhj4.pdf",
+            chapters: [
+              {
+                chName: "पाठ 1: वन के रास्ते",
+                link: "https://ncert.nic.in/textbook/pdf/chhj401.pdf",
+              },
+              {
+                chName: "पाठ 2: चन्द्रयान",
+                link: "https://ncert.nic.in/textbook/pdf/chhj402.pdf",
+              },
+              {
+                chName: "पाठ 3: नन्हा-मुन्ना रघुनाथ",
+                link: "https://ncert.nic.in/textbook/pdf/chhj403.pdf",
+              },
+              {
+                chName: "पाठ 4: नदी",
+                link: "https://ncert.nic.in/textbook/pdf/chhj404.pdf",
+              },
+              {
+                chName: "पाठ 5: हवा महल",
+                link: "https://ncert.nic.in/textbook/pdf/chhj405.pdf",
+              },
+              {
+                chName: "पाठ 6: अकबर बीरबल",
+                link: "https://ncert.nic.in/textbook/pdf/chhj406.pdf",
+              },
+              {
+                chName: "पाठ 7: कबीर",
+                link: "https://ncert.nic.in/textbook/pdf/chhj407.pdf",
+              },
+              {
+                chName: "पाठ 8: हमारा पेट",
+                link: "https://ncert.nic.in/textbook/pdf/chhj408.pdf",
+              },
+              {
+                chName: "पाठ 9: दादी-नानी",
+                link: "https://ncert.nic.in/textbook/pdf/chhj409.pdf",
+              },
+              {
+                chName: "पाठ 10: ओस की बूंदें",
+                link: "https://ncert.nic.in/textbook/pdf/chhj410.pdf",
+              },
+              {
+                chName: "पाठ 11: पारसी काका",
+                link: "https://ncert.nic.in/textbook/pdf/chhj411.pdf",
+              },
+              {
+                chName: "पाठ 12: टिल्लू की उड़ान",
+                link: "https://ncert.nic.in/textbook/pdf/chhj412.pdf",
+              },
+              {
+                chName: "पाठ 13: तारा की पहचान",
+                link: "https://ncert.nic.in/textbook/pdf/chhj413.pdf",
+              },
+              {
+                chName: "पाठ 14: फसलें उगाती किसान",
+                link: "https://ncert.nic.in/textbook/pdf/chhj414.pdf",
+              },
+              {
+                chName: "पाठ 15: चिट्ठी का सफर",
+                link: "https://ncert.nic.in/textbook/pdf/chhj415.pdf",
+              },
+            ],
+          },
+        ],
+
+        // CLASS 4 ENGLISH – Marigold 4
+        "4_English": [
+          {
+            name: "Marigold – 4 (English)",
+            img: "https://ncert.nic.in/textbook/pdf/aemr4cc.jpg",
+            full: "https://ncert.nic.in/textbook/pdf/aemr4.pdf",
+            chapters: [
+              {
+                chName: "Poem 1: Wake Up!",
+                link: "https://ncert.nic.in/textbook/pdf/aemr401.pdf",
+              },
+              {
+                chName: "Poem 2: Noses",
+                link: "https://ncert.nic.in/textbook/pdf/aemr402.pdf",
+              },
+              {
+                chName: "Story 1: Run!",
+                link: "https://ncert.nic.in/textbook/pdf/aemr403.pdf",
+              },
+              {
+                chName: "Poem 3: Why?",
+                link: "https://ncert.nic.in/textbook/pdf/aemr404.pdf",
+              },
+              {
+                chName: "Story 2: I Have a Little Turtle",
+                link: "https://ncert.nic.in/textbook/pdf/aemr405.pdf",
+              },
+              {
+                chName: "Poem 4: Chanu's Friend",
+                link: "https://ncert.nic.in/textbook/pdf/aemr406.pdf",
+              },
+              {
+                chName: "Story 3: Pinocchio",
+                link: "https://ncert.nic.in/textbook/pdf/aemr407.pdf",
+              },
+              {
+                chName: "Poem 5: The Quarrel",
+                link: "https://ncert.nic.in/textbook/pdf/aemr408.pdf",
+              },
+              {
+                chName: "Story 4: The Donkey in the Tiger Skin",
+                link: "https://ncert.nic.in/textbook/pdf/aemr409.pdf",
+              },
+              {
+                chName: "Poem 6: Topsy Turvy Land",
+                link: "https://ncert.nic.in/textbook/pdf/aemr410.pdf",
+              },
+              {
+                chName: "Story 5: Helen Keller",
+                link: "https://ncert.nic.in/textbook/pdf/aemr411.pdf",
+              },
+              {
+                chName: "Poem 7: Hiawatha",
+                link: "https://ncert.nic.in/textbook/pdf/aemr412.pdf",
+              },
+              {
+                chName: "Story 6: The Greedy Friend",
+                link: "https://ncert.nic.in/textbook/pdf/aemr413.pdf",
+              },
+              {
+                chName: "Poem 8: The Blind Girl",
+                link: "https://ncert.nic.in/textbook/pdf/aemr414.pdf",
+              },
+              {
+                chName: "Story 7: The Post Office",
+                link: "https://ncert.nic.in/textbook/pdf/aemr415.pdf",
+              },
+              {
+                chName: "Poem 9: Aunty Alligator",
+                link: "https://ncert.nic.in/textbook/pdf/aemr416.pdf",
+              },
+              {
+                chName: "Story 8: The King and the Quitter",
+                link: "https://ncert.nic.in/textbook/pdf/aemr417.pdf",
+              },
+              {
+                chName: "Poem 10: Night Sky",
+                link: "https://ncert.nic.in/textbook/pdf/aemr418.pdf",
+              },
+              {
+                chName: "Story 9: The Donkey and the Dog",
+                link: "https://ncert.nic.in/textbook/pdf/aemr419.pdf",
+              },
+              {
+                chName: "Poem 11: Alice in Wonderland",
+                link: "https://ncert.nic.in/textbook/pdf/aemr420.pdf",
+              },
+            ],
+          },
+        ],
+
+        // CLASS 4 MATHS – Maths Magic 4
+        "4_Maths": [
+          {
+            name: "Maths Magic – 4",
+            img: "https://ncert.nic.in/textbook/pdf/aemh4cc.jpg",
+            full: "https://ncert.nic.in/textbook/pdf/aemh4.pdf",
+            chapters: [
+              {
+                chName: "1: Building with Bricks",
+                link: "https://ncert.nic.in/textbook/pdf/aemh401.pdf",
+              },
+              {
+                chName: "2: Long and Short",
+                link: "https://ncert.nic.in/textbook/pdf/aemh402.pdf",
+              },
+              {
+                chName: "3: A Trip to Bhopal",
+                link: "https://ncert.nic.in/textbook/pdf/aemh403.pdf",
+              },
+              {
+                chName: "4: Tick-Tick-Tick",
+                link: "https://ncert.nic.in/textbook/pdf/aemh404.pdf",
+              },
+              {
+                chName: "5: The Way The World Looks",
+                link: "https://ncert.nic.in/textbook/pdf/aemh405.pdf",
+              },
+              {
+                chName: "6: The Junk Seller",
+                link: "https://ncert.nic.in/textbook/pdf/aemh406.pdf",
+              },
+              {
+                chName: "7: Number Fun!",
+                link: "https://ncert.nic.in/textbook/pdf/aemh407.pdf",
+              },
+              {
+                chName: "8: Make it Short!",
+                link: "https://ncert.nic.in/textbook/pdf/aemh408.pdf",
+              },
+              {
+                chName: "9: Halves and Quarters",
+                link: "https://ncert.nic.in/textbook/pdf/aemh409.pdf",
+              },
+              {
+                chName: "10: Play with Patterns",
+                link: "https://ncert.nic.in/textbook/pdf/aemh410.pdf",
+              },
+              {
+                chName: "11: Hands-On with Shapes",
+                link: "https://ncert.nic.in/textbook/pdf/aemh411.pdf",
+              },
+              {
+                chName: "12: More on Shapes",
+                link: "https://ncert.nic.in/textbook/pdf/aemh412.pdf",
+              },
+              {
+                chName: "13: Smart Charts",
+                link: "https://ncert.nic.in/textbook/pdf/aemh413.pdf",
+              },
+              {
+                chName: "14: Fields and Fences",
+                link: "https://ncert.nic.in/textbook/pdf/aemh414.pdf",
+              },
+            ],
+          },
+        ],
+
+        // CLASS 4 EVS – Looking Around 4
+        "4_EVS": [
+          {
+            name: "Looking Around – 4",
+            img: "https://ncert.nic.in/textbook/pdf/aeen4cc.jpg",
+            full: "https://ncert.nic.in/textbook/pdf/aeen4.pdf",
+            chapters: [
+              {
+                chName: "1: Family And Friends",
+                link: "https://ncert.nic.in/textbook/pdf/aeen401.pdf",
+              },
+              {
+                chName: "2: Food We Eat",
+                link: "https://ncert.nic.in/textbook/pdf/aeen402.pdf",
+              },
+              {
+                chName: "3: Water O' Water!",
+                link: "https://ncert.nic.in/textbook/pdf/aeen403.pdf",
+              },
+              {
+                chName: "4: Our First School",
+                link: "https://ncert.nic.in/textbook/pdf/aeen404.pdf",
+              },
+              {
+                chName: "5: Clothes We Wear",
+                link: "https://ncert.nic.in/textbook/pdf/aeen405.pdf",
+              },
+              {
+                chName: "6: Our Festivals",
+                link: "https://ncert.nic.in/textbook/pdf/aeen406.pdf",
+              },
+              {
+                chName: "7: From Here To There",
+                link: "https://ncert.nic.in/textbook/pdf/aeen407.pdf",
+              },
+              {
+                chName: "8: Our Internal Organs",
+                link: "https://ncert.nic.in/textbook/pdf/aeen408.pdf",
+              },
+              {
+                chName: "9: Our Country",
+                link: "https://ncert.nic.in/textbook/pdf/aeen409.pdf",
+              },
+              {
+                chName: "10: Our National Symbols",
+                link: "https://ncert.nic.in/textbook/pdf/aeen410.pdf",
+              },
+              {
+                chName: "11: People Who Help Us",
+                link: "https://ncert.nic.in/textbook/pdf/aeen411.pdf",
+              },
+              {
+                chName: "12: Animals And Their Homes",
+                link: "https://ncert.nic.in/textbook/pdf/aeen412.pdf",
+              },
+              {
+                chName: "13: Plants Around Us",
+                link: "https://ncert.nic.in/textbook/pdf/aeen413.pdf",
+              },
+              {
+                chName: "14: Weather And Seasons",
+                link: "https://ncert.nic.in/textbook/pdf/aeen414.pdf",
+              },
+              {
+                chName: "15: Means Of Communication",
+                link: "https://ncert.nic.in/textbook/pdf/aeen415.pdf",
+              },
+              {
+                chName: "16: Means Of Transport",
+                link: "https://ncert.nic.in/textbook/pdf/aeen416.pdf",
+              },
+              {
+                chName: "17: Houses We Live In",
+                link: "https://ncert.nic.in/textbook/pdf/aeen417.pdf",
+              },
+              {
+                chName: "18: Our Universe",
+                link: "https://ncert.nic.in/textbook/pdf/aeen418.pdf",
+              },
+              {
+                chName: "19: Safety Rules",
+                link: "https://ncert.nic.in/textbook/pdf/aeen419.pdf",
+              },
+              {
+                chName: "20: Our Earth",
+                link: "https://ncert.nic.in/textbook/pdf/aeen420.pdf",
+              },
+              {
+                chName: "21: Our Needs",
+                link: "https://ncert.nic.in/textbook/pdf/aeen421.pdf",
+              },
+              {
+                chName: "22: Our Environment",
+                link: "https://ncert.nic.in/textbook/pdf/aeen422.pdf",
+              },
+              {
+                chName: "23: Our Community",
+                link: "https://ncert.nic.in/textbook/pdf/aeen423.pdf",
+              },
+              {
+                chName: "24: Our Market",
+                link: "https://ncert.nic.in/textbook/pdf/aeen424.pdf",
+              },
+            ],
+          },
+        ],
+
+        // CLASS 5 HINDI – Rimjhim 5
+        "5_Hindi": [
+          {
+            name: "Rimjhim – 5 (Hindi)",
+            img: "https://ncert.nic.in/textbook/pdf/chhj5cc.jpg",
+            full: "https://ncert.nic.in/textbook/pdf/chhj5.pdf",
+            chapters: [
+              {
+                chName: "पाठ 1: हामिद खाँ",
+                link: "https://ncert.nic.in/textbook/pdf/chhj501.pdf",
+              },
+              {
+                chName: "पाठ 2: क्या तुम्हें लगता है?",
+                link: "https://ncert.nic.in/textbook/pdf/chhj502.pdf",
+              },
+              {
+                chName: "पाठ 3: मेरी मछली माला",
+                link: "https://ncert.nic.in/textbook/pdf/chhj503.pdf",
+              },
+              {
+                chName: "पाठ 4: मेरा जादू घर",
+                link: "https://ncert.nic.in/textbook/pdf/chhj504.pdf",
+              },
+              {
+                chName: "पाठ 5: चाँद की चमक",
+                link: "https://ncert.nic.in/textbook/pdf/chhj505.pdf",
+              },
+              {
+                chName: "पाठ 6: माता का अंक",
+                link: "https://ncert.nic.in/textbook/pdf/chhj506.pdf",
+              },
+              {
+                chName: "पाठ 7: गुल्ली दंडा",
+                link: "https://ncert.nic.in/textbook/pdf/chhj507.pdf",
+              },
+              {
+                chName: "पाठ 8: हिरण भरी धरती",
+                link: "https://ncert.nic.in/textbook/pdf/chhj508.pdf",
+              },
+              {
+                chName: "पाठ 9: स्वामी जी और हमारा देश",
+                link: "https://ncert.nic.in/textbook/pdf/chhj509.pdf",
+              },
+              {
+                chName: "पाठ 10: गीत अगीत",
+                link: "https://ncert.nic.in/textbook/pdf/chhj510.pdf",
+              },
+              {
+                chName: "पाठ 11: भालू भालू आओ खेलें",
+                link: "https://ncert.nic.in/textbook/pdf/chhj511.pdf",
+              },
+              {
+                chName: "पाठ 12: चित्रकला प्रतियोगिता",
+                link: "https://ncert.nic.in/textbook/pdf/chhj512.pdf",
+              },
+              {
+                chName: "पाठ 13: मेरा घर",
+                link: "https://ncert.nic.in/textbook/pdf/chhj513.pdf",
+              },
+              {
+                chName: "पाठ 14: रसोई में",
+                link: "https://ncert.nic.in/textbook/pdf/chhj514.pdf",
+              },
+              {
+                chName: "पाठ 15: मेरा परिवहन",
+                link: "https://ncert.nic.in/textbook/pdf/chhj515.pdf",
+              },
+              {
+                chName: "पाठ 16: मेरा बाजार",
+                link: "https://ncert.nic.in/textbook/pdf/chhj516.pdf",
+              },
+              {
+                chName: "पाठ 17: मेरा पशु चिकित्सालय",
+                link: "https://ncert.nic.in/textbook/pdf/chhj517.pdf",
+              },
+              {
+                chName: "पाठ 18: मेरा विद्यालय",
+                link: "https://ncert.nic.in/textbook/pdf/chhj518.pdf",
+              },
+              {
+                chName: "पाठ 19: मेरा पर्व",
+                link: "https://ncert.nic.in/textbook/pdf/chhj519.pdf",
+              },
+              {
+                chName: "पाठ 20: मेरा राज्य",
+                link: "https://ncert.nic.in/textbook/pdf/chhj520.pdf",
+              },
+            ],
+          },
+        ],
+
+        // CLASS 5 ENGLISH – Marigold 5
+        "5_English": [
+          {
+            name: "Marigold – 5 (English)",
+            img: "https://ncert.nic.in/textbook/pdf/aemr5cc.jpg",
+            full: "https://ncert.nic.in/textbook/pdf/aemr5.pdf",
+            chapters: [
+              {
+                chName: "Poem 1: Where Do All the Colours Go?",
+                link: "https://ncert.nic.in/textbook/pdf/aemr501.pdf",
+              },
+              {
+                chName: "Poem 2: World of Colours",
+                link: "https://ncert.nic.in/textbook/pdf/aemr502.pdf",
+              },
+              {
+                chName: "Story 1: Ice-Cream Man",
+                link: "https://ncert.nic.in/textbook/pdf/aemr503.pdf",
+              },
+              {
+                chName: "Poem 3: Wonderful World",
+                link: "https://ncert.nic.in/textbook/pdf/aemr504.pdf",
+              },
+              {
+                chName: "Story 2: Tree House",
+                link: "https://ncert.nic.in/textbook/pdf/aemr505.pdf",
+              },
+              {
+                chName: "Poem 4: My Shadow",
+                link: "https://ncert.nic.in/textbook/pdf/aemr506.pdf",
+              },
+              {
+                chName: "Story 3: Crying",
+                link: "https://ncert.nic.in/textbook/pdf/aemr507.pdf",
+              },
+              {
+                chName: "Poem 5: The Lazy Frog",
+                link: "https://ncert.nic.in/textbook/pdf/aemr508.pdf",
+              },
+              {
+                chName: "Story 4: The Lazy Frog",
+                link: "https://ncert.nic.in/textbook/pdf/aemr509.pdf",
+              },
+              {
+                chName: "Poem 6: Sing a Song of People",
+                link: "https://ncert.nic.in/textbook/pdf/aemr510.pdf",
+              },
+              {
+                chName: "Story 5: Malu Bhalu",
+                link: "https://ncert.nic.in/textbook/pdf/aemr511.pdf",
+              },
+              {
+                chName: "Poem 7: The Valley of Flowers",
+                link: "https://ncert.nic.in/textbook/pdf/aemr512.pdf",
+              },
+              {
+                chName: "Story 6: The Valley of Flowers",
+                link: "https://ncert.nic.in/textbook/pdf/aemr513.pdf",
+              },
+            ],
+          },
+        ],
+
+        // CLASS 5 MATHS – Maths Magic 5
+        "5_Maths": [
+          {
+            name: "Maths Magic – 5",
+            img: "https://ncert.nic.in/textbook/pdf/aemh5cc.jpg",
+            full: "https://ncert.nic.in/textbook/pdf/aemh5.pdf",
+            chapters: [
+              {
+                chName: "1: The Fish Tale",
+                link: "https://ncert.nic.in/textbook/pdf/aemh501.pdf",
+              },
+              {
+                chName: "2: Shapes And Angles",
+                link: "https://ncert.nic.in/textbook/pdf/aemh502.pdf",
+              },
+              {
+                chName: "3: How Many Squares?",
+                link: "https://ncert.nic.in/textbook/pdf/aemh503.pdf",
+              },
+              {
+                chName: "4: Parts And Wholes",
+                link: "https://ncert.nic.in/textbook/pdf/aemh504.pdf",
+              },
+              {
+                chName: "5: Does it Look the Same?",
+                link: "https://ncert.nic.in/textbook/pdf/aemh505.pdf",
+              },
+              {
+                chName: "6: Be My Multiple, I'll Be Your Factor",
+                link: "https://ncert.nic.in/textbook/pdf/aemh506.pdf",
+              },
+              {
+                chName: "7: Can You See The Pattern?",
+                link: "https://ncert.nic.in/textbook/pdf/aemh507.pdf",
+              },
+              {
+                chName: "8: Mapping Your Way",
+                link: "https://ncert.nic.in/textbook/pdf/aemh508.pdf",
+              },
+              {
+                chName: "9: Boxes And Sketches",
+                link: "https://ncert.nic.in/textbook/pdf/aemh509.pdf",
+              },
+              {
+                chName: "10: Tenths And Hundredths",
+                link: "https://ncert.nic.in/textbook/pdf/aemh510.pdf",
+              },
+              {
+                chName: "11: Area And Its Boundary",
+                link: "https://ncert.nic.in/textbook/pdf/aemh511.pdf",
+              },
+              {
+                chName: "12: Smart Charts",
+                link: "https://ncert.nic.in/textbook/pdf/aemh512.pdf",
+              },
+              {
+                chName: "13: Ways To Multiply",
+                link: "https://ncert.nic.in/textbook/pdf/aemh513.pdf",
+              },
+              {
+                chName: "14: How Big? How Heavy?",
+                link: "https://ncert.nic.in/textbook/pdf/aemh514.pdf",
+              },
+            ],
+          },
+        ],
+
+        // CLASS 5 EVS – Looking Around 5
+        "5_EVS": [
+          {
+            name: "Looking Around – 5",
+            img: "https://ncert.nic.in/textbook/pdf/aeen5cc.jpg",
+            full: "https://ncert.nic.in/textbook/pdf/aeen5.pdf",
+            chapters: [
+              {
+                chName: "1: Super Senses",
+                link: "https://ncert.nic.in/textbook/pdf/aeen501.pdf",
+              },
+              {
+                chName: "2: A Snake Charmer's Story",
+                link: "https://ncert.nic.in/textbook/pdf/aeen502.pdf",
+              },
+              {
+                chName: "3: From Tasty Green Leaf to Crunchy Red Fruit",
+                link: "https://ncert.nic.in/textbook/pdf/aeen503.pdf",
+              },
+              {
+                chName: "4: Walls Tell Stories",
+                link: "https://ncert.nic.in/textbook/pdf/aeen504.pdf",
+              },
+              {
+                chName: "5: Whose Forests?",
+                link: "https://ncert.nic.in/textbook/pdf/aeen505.pdf",
+              },
+              {
+                chName: "6: Every Drop Counts",
+                link: "https://ncert.nic.in/textbook/pdf/aeen506.pdf",
+              },
+              {
+                chName: "7: Experiments with Water",
+                link: "https://ncert.nic.in/textbook/pdf/aeen507.pdf",
+              },
+              {
+                chName: "8: A Treat for Mosquitoes",
+                link: "https://ncert.nic.in/textbook/pdf/aeen508.pdf",
+              },
+              {
+                chName: "9: Up You Go!",
+                link: "https://ncert.nic.in/textbook/pdf/aeen509.pdf",
+              },
+              {
+                chName: "10: Blow Hot, Blow Cold",
+                link: "https://ncert.nic.in/textbook/pdf/aeen510.pdf",
+              },
+              {
+                chName: "11: Chuskit Goes to School",
+                link: "https://ncert.nic.in/textbook/pdf/aeen511.pdf",
+              },
+              {
+                chName: "12: Food And Shelter",
+                link: "https://ncert.nic.in/textbook/pdf/aeen512.pdf",
+              },
+              {
+                chName: "13: Keeping Safe",
+                link: "https://ncert.nic.in/textbook/pdf/aeen513.pdf",
+              },
+              {
+                chName: "14: Picking Right Clothes",
+                link: "https://ncert.nic.in/textbook/pdf/aeen514.pdf",
+              },
+              {
+                chName: "15: Saying Without Speaking",
+                link: "https://ncert.nic.in/textbook/pdf/aeen515.pdf",
+              },
+              {
+                chName: "16: Who Will Do This Work?",
+                link: "https://ncert.nic.in/textbook/pdf/aeen516.pdf",
+              },
+              {
+                chName: "17: From Market to Home",
+                link: "https://ncert.nic.in/textbook/pdf/aeen517.pdf",
+              },
+              {
+                chName: "18: A Hug or A Wash?",
+                link: "https://ncert.nic.in/textbook/pdf/aeen518.pdf",
+              },
+              {
+                chName: "19: Animals - Our Friends",
+                link: "https://ncert.nic.in/textbook/pdf/aeen519.pdf",
+              },
+              {
+                chName: "20: Every Drop Counts",
+                link: "https://ncert.nic.in/textbook/pdf/aeen520.pdf",
+              },
+              {
+                chName: "21: Seeds and Seeds",
+                link: "https://ncert.nic.in/textbook/pdf/aeen521.pdf",
+              },
+              {
+                chName: "22: On The Move Again",
+                link: "https://ncert.nic.in/textbook/pdf/aeen522.pdf",
+              },
+              {
+                chName: "23: Left-Right",
+                link: "https://ncert.nic.in/textbook/pdf/aeen523.pdf",
+              },
+              {
+                chName: "24: A House Like This",
+                link: "https://ncert.nic.in/textbook/pdf/aeen524.pdf",
+              },
+            ],
+          },
+        ],
+        // CLASS 6 HINDI – Bal Ramkatha
+        "6_Hindi": [
+          {
+            name: "Bal Ramkatha (Hindi)",
+            img: "https://ncert.nic.in/textbook/pdf/ghba1cc.jpg",
+            full: "https://ncert.nic.in/textbook/pdf/ghba1.pdf",
+            chapters: [
+              {
+                chName: "1: राम का जन्म",
+                link: "https://ncert.nic.in/textbook/pdf/ghba101.pdf",
+              },
+              {
+                chName: "2: परीक्षा और वनवास",
+                link: "https://ncert.nic.in/textbook/pdf/ghba102.pdf",
+              },
+              {
+                chName: "3: सीता हरण",
+                link: "https://ncert.nic.in/textbook/pdf/ghba103.pdf",
+              },
+              {
+                chName: "4: राम का वानर सेना बनाना",
+                link: "https://ncert.nic.in/textbook/pdf/ghba104.pdf",
+              },
+              {
+                chName: "5: सेतु निर्माण",
+                link: "https://ncert.nic.in/textbook/pdf/ghba105.pdf",
+              },
+              {
+                chName: "6: लंका दहन",
+                link: "https://ncert.nic.in/textbook/pdf/ghba106.pdf",
+              },
+              {
+                chName: "7: रावण वध",
+                link: "https://ncert.nic.in/textbook/pdf/ghba107.pdf",
+              },
+              {
+                chName: "8: राम-सीता मिलाप",
+                link: "https://ncert.nic.in/textbook/pdf/ghba108.pdf",
+              },
+              {
+                chName: "9: अयोध्या गमन",
+                link: "https://ncert.nic.in/textbook/pdf/ghba109.pdf",
+              },
+            ],
+          },
+        ],
+
+        // CLASS 6 ENGLISH – Honeysuckle
+        "6_English": [
+          {
+            name: "Honeysuckle (English)",
+            img: "https://ncert.nic.in/textbook/pdf/aeho1cc.jpg",
+            full: "https://ncert.nic.in/textbook/pdf/aeho1.pdf",
+            chapters: [
+              {
+                chName: "1: Who Did Patrick's Homework?",
+                link: "https://ncert.nic.in/textbook/pdf/aeho101.pdf",
+              },
+              {
+                chName: "2: How the Dog Found Himself",
+                link: "https://ncert.nic.in/textbook/pdf/aeho102.pdf",
+              },
+              {
+                chName: "3: Taro's Reward",
+                link: "https://ncert.nic.in/textbook/pdf/aeho103.pdf",
+              },
+              {
+                chName: "4: An Indian - American Woman",
+                link: "https://ncert.nic.in/textbook/pdf/aeho104.pdf",
+              },
+              {
+                chName: "5: Fair Play",
+                link: "https://ncert.nic.in/textbook/pdf/aeho105.pdf",
+              },
+              {
+                chName: "6: The Banyan Tree",
+                link: "https://ncert.nic.in/textbook/pdf/aeho106.pdf",
+              },
+              {
+                chName: "7: A Tale of Two Birds",
+                link: "https://ncert.nic.in/textbook/pdf/aeho107.pdf",
+              },
+              {
+                chName: "8: The Friendly Mongoose",
+                link: "https://ncert.nic.in/textbook/pdf/aeho108.pdf",
+              },
+              {
+                chName: "9: The Shepherd's Boy",
+                link: "https://ncert.nic.in/textbook/pdf/aeho109.pdf",
+              },
+              {
+                chName: "10: A House is Not a Home",
+                link: "https://ncert.nic.in/textbook/pdf/aeho110.pdf",
+              },
+            ],
+          },
+        ],
+
+        // CLASS 6 MATHS – NCERT Maths
+        "6_Maths": [
+          {
+            name: "NCERT Mathematics – 6",
+            img: "https://ncert.nic.in/textbook/pdf/gmch1cc.jpg",
+            full: "https://ncert.nic.in/textbook/pdf/gmch1.pdf",
+            chapters: [
+              {
+                chName: "1: Knowing Our Numbers",
+                link: "https://ncert.nic.in/textbook/pdf/gmch101.pdf",
+              },
+              {
+                chName: "2: Whole Numbers",
+                link: "https://ncert.nic.in/textbook/pdf/gmch102.pdf",
+              },
+              {
+                chName: "3: Playing with Numbers",
+                link: "https://ncert.nic.in/textbook/pdf/gmch103.pdf",
+              },
+              {
+                chName: "4: Basic Geometrical Ideas",
+                link: "https://ncert.nic.in/textbook/pdf/gmch104.pdf",
+              },
+              {
+                chName: "5: Understanding Elementary Shapes",
+                link: "https://ncert.nic.in/textbook/pdf/gmch105.pdf",
+              },
+              {
+                chName: "6: Integers",
+                link: "https://ncert.nic.in/textbook/pdf/gmch106.pdf",
+              },
+              {
+                chName: "7: Fractions",
+                link: "https://ncert.nic.in/textbook/pdf/gmch107.pdf",
+              },
+              {
+                chName: "8: Decimals",
+                link: "https://ncert.nic.in/textbook/pdf/gmch108.pdf",
+              },
+              {
+                chName: "9: Data Handling",
+                link: "https://ncert.nic.in/textbook/pdf/gmch109.pdf",
+              },
+              {
+                chName: "10: Mensuration",
+                link: "https://ncert.nic.in/textbook/pdf/gmch110.pdf",
+              },
+              {
+                chName: "11: Algebra",
+                link: "https://ncert.nic.in/textbook/pdf/gmch111.pdf",
+              },
+              {
+                chName: "12: Ratio and Proportion",
+                link: "https://ncert.nic.in/textbook/pdf/gmch112.pdf",
+              },
+              {
+                chName: "13: Symmetry",
+                link: "https://ncert.nic.in/textbook/pdf/gmch113.pdf",
+              },
+              {
+                chName: "14: Practical Geometry",
+                link: "https://ncert.nic.in/textbook/pdf/gmch114.pdf",
+              },
+            ],
+          },
+        ],
+
+        // CLASS 6 SCIENCE – NCERT Science
+        "6_Science": [
+          {
+            name: "NCERT Science – 6",
+            img: "https://ncert.nic.in/textbook/pdf/gesc1cc.jpg",
+            full: "https://ncert.nic.in/textbook/pdf/gesc1.pdf",
+            chapters: [
+              {
+                chName: "1: Food: Where Does it Come From?",
+                link: "https://ncert.nic.in/textbook/pdf/gesc101.pdf",
+              },
+              {
+                chName: "2: Components of Food",
+                link: "https://ncert.nic.in/textbook/pdf/gesc102.pdf",
+              },
+              {
+                chName: "3: Fibre to Fabric",
+                link: "https://ncert.nic.in/textbook/pdf/gesc103.pdf",
+              },
+              {
+                chName: "4: Sorting Materials Into Groups",
+                link: "https://ncert.nic.in/textbook/pdf/gesc104.pdf",
+              },
+              {
+                chName: "5: Separation of Substances",
+                link: "https://ncert.nic.in/textbook/pdf/gesc105.pdf",
+              },
+              {
+                chName: "6: Changes Around Us",
+                link: "https://ncert.nic.in/textbook/pdf/gesc106.pdf",
+              },
+              {
+                chName: "7: Getting to Know Plants",
+                link: "https://ncert.nic.in/textbook/pdf/gesc107.pdf",
+              },
+              {
+                chName: "8: Body Movements",
+                link: "https://ncert.nic.in/textbook/pdf/gesc108.pdf",
+              },
+              {
+                chName: "9: The Living Organisms",
+                link: "https://ncert.nic.in/textbook/pdf/gesc109.pdf",
+              },
+              {
+                chName: "10: Motion and Measurement of Distances",
+                link: "https://ncert.nic.in/textbook/pdf/gesc110.pdf",
+              },
+              {
+                chName: "11: Light, Shadows and Reflections",
+                link: "https://ncert.nic.in/textbook/pdf/gesc111.pdf",
+              },
+              {
+                chName: "12: Electricity and Circuits",
+                link: "https://ncert.nic.in/textbook/pdf/gesc112.pdf",
+              },
+              {
+                chName: "13: Fun with Magnets",
+                link: "https://ncert.nic.in/textbook/pdf/gesc113.pdf",
+              },
+              {
+                chName: "14: Water",
+                link: "https://ncert.nic.in/textbook/pdf/gesc114.pdf",
+              },
+              {
+                chName: "15: Air Around Us",
+                link: "https://ncert.nic.in/textbook/pdf/gesc115.pdf",
+              },
+              {
+                chName: "16: Garbage In, Garbage Out",
+                link: "https://ncert.nic.in/textbook/pdf/gesc116.pdf",
+              },
+            ],
+          },
+        ],
+
+        // CLASS 6 SST – Social Science
+        "6_SST": [
+          {
+            name: "Social Science – 6",
+            img: "https://ncert.nic.in/textbook/pdf/gsso1cc.jpg",
+            full: "https://ncert.nic.in/textbook/pdf/gsso1.pdf",
+            chapters: [
+              {
+                chName: "History: What, Where, How and When?",
+                link: "https://ncert.nic.in/textbook/pdf/gsso101.pdf",
+              },
+              {
+                chName: "History: On The Trail of Earliest People",
+                link: "https://ncert.nic.in/textbook/pdf/gsso102.pdf",
+              },
+              {
+                chName: "History: From Gathering to Growing Food",
+                link: "https://ncert.nic.in/textbook/pdf/gsso103.pdf",
+              },
+              {
+                chName: "History: Kingdoms, Kings and Early Republic",
+                link: "https://ncert.nic.in/textbook/pdf/gsso104.pdf",
+              },
+              {
+                chName: "History: New Questions and Ideas",
+                link: "https://ncert.nic.in/textbook/pdf/gsso105.pdf",
+              },
+              {
+                chName: "History: Ashoka, The Emperor Who Gave Up War",
+                link: "https://ncert.nic.in/textbook/pdf/gsso106.pdf",
+              },
+              {
+                chName: "History: Vital Villages, Thriving Towns",
+                link: "https://ncert.nic.in/textbook/pdf/gsso107.pdf",
+              },
+              {
+                chName: "History: Traders, Kings and Pilgrims",
+                link: "https://ncert.nic.in/textbook/pdf/gsso108.pdf",
+              },
+              {
+                chName: "History: New Empires and Kingdoms",
+                link: "https://ncert.nic.in/textbook/pdf/gsso109.pdf",
+              },
+              {
+                chName: "History: Buildings, Paintings and Books",
+                link: "https://ncert.nic.in/textbook/pdf/gsso110.pdf",
+              },
+              {
+                chName: "Geography: The Earth in the Solar System",
+                link: "https://ncert.nic.in/textbook/pdf/gsso111.pdf",
+              },
+              {
+                chName: "Geography: Globe: Latitudes and Longitudes",
+                link: "https://ncert.nic.in/textbook/pdf/gsso112.pdf",
+              },
+              {
+                chName: "Geography: Motions of the Earth",
+                link: "https://ncert.nic.in/textbook/pdf/gsso113.pdf",
+              },
+              {
+                chName: "Geography: Maps",
+                link: "https://ncert.nic.in/textbook/pdf/gsso114.pdf",
+              },
+              {
+                chName: "Geography: Major Domains of the Earth",
+                link: "https://ncert.nic.in/textbook/pdf/gsso115.pdf",
+              },
+              {
+                chName: "Geography: Major Landforms of the Earth",
+                link: "https://ncert.nic.in/textbook/pdf/gsso116.pdf",
+              },
+              {
+                chName: "Geography: Our Country - India",
+                link: "https://ncert.nic.in/textbook/pdf/gsso117.pdf",
+              },
+              {
+                chName: "Geography: India: Climate, Vegetation and Wildlife",
+                link: "https://ncert.nic.in/textbook/pdf/gsso118.pdf",
+              },
+              {
+                chName: "Civics: Understanding Diversity",
+                link: "https://ncert.nic.in/textbook/pdf/gsso119.pdf",
+              },
+              {
+                chName: "Civics: Diversity and Discrimination",
+                link: "https://ncert.nic.in/textbook/pdf/gsso120.pdf",
+              },
+              {
+                chName: "Civics: What is Government?",
+                link: "https://ncert.nic.in/textbook/pdf/gsso121.pdf",
+              },
+              {
+                chName: "Civics: Key Elements of a Democratic Government",
+                link: "https://ncert.nic.in/textbook/pdf/gsso122.pdf",
+              },
+            ],
+          },
+        ],
+
+        // CLASS 7 HINDI – Vasant
+        "7_Hindi": [
+          {
+            name: "Vasant (Hindi)",
+            img: "https://ncert.nic.in/textbook/pdf/ihva1cc.jpg",
+            full: "https://ncert.nic.in/textbook/pdf/ihva1.pdf",
+            chapters: [
+              {
+                chName: "1: हरी मिट्टी की सैर",
+                link: "https://ncert.nic.in/textbook/pdf/ihva101.pdf",
+              },
+              {
+                chName: "2: लक्कल-लक्कल छल",
+                link: "https://ncert.nic.in/textbook/pdf/ihva102.pdf",
+              },
+              {
+                chName: "3: लचित बोरफुकन",
+                link: "https://ncert.nic.in/textbook/pdf/ihva103.pdf",
+              },
+              {
+                chName: "4: कवि सम्मेलन",
+                link: "https://ncert.nic.in/textbook/pdf/ihva104.pdf",
+              },
+              {
+                chName: "5: मेरा पशु चिकित्सालय",
+                link: "https://ncert.nic.in/textbook/pdf/ihva105.pdf",
+              },
+              {
+                chName: "6: गीत अगीत",
+                link: "https://ncert.nic.in/textbook/pdf/ihva106.pdf",
+              },
+              {
+                chName: "7: वीरेन्द्रनाथ करकरे",
+                link: "https://ncert.nic.in/textbook/pdf/ihva107.pdf",
+              },
+              {
+                chName: "8: बस की यात्रा",
+                link: "https://ncert.nic.in/textbook/pdf/ihva108.pdf",
+              },
+              {
+                chName: "9: आकाश में आग",
+                link: "https://ncert.nic.in/textbook/pdf/ihva109.pdf",
+              },
+              {
+                chName: "10: नाना साहेब",
+                link: "https://ncert.nic.in/textbook/pdf/ihva110.pdf",
+              },
+              {
+                chName: "11: चाँद पर कदम",
+                link: "https://ncert.nic.in/textbook/pdf/ihva111.pdf",
+              },
+              {
+                chName: "12: ध्वनि",
+                link: "https://ncert.nic.in/textbook/pdf/ihva112.pdf",
+              },
+              {
+                chName: "13: कोयला पर्वत",
+                link: "https://ncert.nic.in/textbook/pdf/ihva113.pdf",
+              },
+              {
+                chName: "14: वैज्ञानिक चंद्रशेखर वेंकट रमन",
+                link: "https://ncert.nic.in/textbook/pdf/ihva114.pdf",
+              },
+              {
+                chName: "15: वन के रास्ते",
+                link: "https://ncert.nic.in/textbook/pdf/ihva115.pdf",
+              },
+              {
+                chName: "16:श्रीनरसिंह का धनुष",
+                link: "https://ncert.nic.in/textbook/pdf/ihva116.pdf",
+              },
+              {
+                chName: "17: मैं नदी हूँ",
+                link: "https://ncert.nic.in/textbook/pdf/ihva117.pdf",
+              },
+              {
+                chName: "18: रोग और औषधि",
+                link: "https://ncert.nic.in/textbook/pdf/ihva118.pdf",
+              },
+              {
+                chName: "19: हमारे मित्र कोकिला",
+                link: "https://ncert.nic.in/textbook/pdf/ihva119.pdf",
+              },
+              {
+                chName: "20: हमारा पर्वत",
+                link: "https://ncert.nic.in/textbook/pdf/ihva120.pdf",
+              },
+            ],
+          },
+        ],
+
+        // CLASS 7 ENGLISH – Honeysuckle
+        "7_English": [
+          {
+            name: "Honeysuckle (English)",
+            img: "https://ncert.nic.in/textbook/pdf/aeho2cc.jpg",
+            full: "https://ncert.nic.in/textbook/pdf/aeho2.pdf",
+            chapters: [
+              {
+                chName: "1: Three Questions",
+                link: "https://ncert.nic.in/textbook/pdf/aeho201.pdf",
+              },
+              {
+                chName: "2: A Gift of Chappals",
+                link: "https://ncert.nic.in/textbook/pdf/aeho202.pdf",
+              },
+              {
+                chName: "3: Gopal and the Hilsa Fish",
+                link: "https://ncert.nic.in/textbook/pdf/aeho203.pdf",
+              },
+              {
+                chName: "4: The Ashes That Made Trees Bloom",
+                link: "https://ncert.nic.in/textbook/pdf/aeho204.pdf",
+              },
+              {
+                chName: "5: Quality Road",
+                link: "https://ncert.nic.in/textbook/pdf/aeho205.pdf",
+              },
+              {
+                chName: "6: Trees",
+                link: "https://ncert.nic.in/textbook/pdf/aeho206.pdf",
+              },
+              {
+                chName: "7: The Story of Cricket",
+                link: "https://ncert.nic.in/textbook/pdf/aeho207.pdf",
+              },
+              {
+                chName: "8: The Woodcutter of Florence",
+                link: "https://ncert.nic.in/textbook/pdf/aeho208.pdf",
+              },
+              {
+                chName: "9: A Tiger in the House",
+                link: "https://ncert.nic.in/textbook/pdf/aeho209.pdf",
+              },
+              {
+                chName: "10: An Alien Hand",
+                link: "https://ncert.nic.in/textbook/pdf/aeho210.pdf",
+              },
+            ],
+          },
+        ],
+
+        // CLASS 7 MATHS – NCERT Maths
+        "7_Maths": [
+          {
+            name: "NCERT Mathematics – 7",
+            img: "https://ncert.nic.in/textbook/pdf/gmch2cc.jpg",
+            full: "https://ncert.nic.in/textbook/pdf/gmch2.pdf",
+            chapters: [
+              {
+                chName: "1: Integers",
+                link: "https://ncert.nic.in/textbook/pdf/gmch201.pdf",
+              },
+              {
+                chName: "2: Fractions and Decimals",
+                link: "https://ncert.nic.in/textbook/pdf/gmch202.pdf",
+              },
+              {
+                chName: "3: Data Handling",
+                link: "https://ncert.nic.in/textbook/pdf/gmch203.pdf",
+              },
+              {
+                chName: "4: Simple Equations",
+                link: "https://ncert.nic.in/textbook/pdf/gmch204.pdf",
+              },
+              {
+                chName: "5: Lines and Angles",
+                link: "https://ncert.nic.in/textbook/pdf/gmch205.pdf",
+              },
+              {
+                chName: "6: The Triangle and its Properties",
+                link: "https://ncert.nic.in/textbook/pdf/gmch206.pdf",
+              },
+              {
+                chName: "7: Congruence of Triangles",
+                link: "https://ncert.nic.in/textbook/pdf/gmch207.pdf",
+              },
+              {
+                chName: "8: Comparing Quantities",
+                link: "https://ncert.nic.in/textbook/pdf/gmch208.pdf",
+              },
+              {
+                chName: "9: Rational Numbers",
+                link: "https://ncert.nic.in/textbook/pdf/gmch209.pdf",
+              },
+              {
+                chName: "10: Practical Geometry",
+                link: "https://ncert.nic.in/textbook/pdf/gmch210.pdf",
+              },
+              {
+                chName: "11: Perimeter and Area",
+                link: "https://ncert.nic.in/textbook/pdf/gmch211.pdf",
+              },
+              {
+                chName: "12: Algebraic Expressions",
+                link: "https://ncert.nic.in/textbook/pdf/gmch212.pdf",
+              },
+              {
+                chName: "13: Exponents and Powers",
+                link: "https://ncert.nic.in/textbook/pdf/gmch213.pdf",
+              },
+              {
+                chName: "14: Symmetry",
+                link: "https://ncert.nic.in/textbook/pdf/gmch214.pdf",
+              },
+              {
+                chName: "15: Visualising Solid Shapes",
+                link: "https://ncert.nic.in/textbook/pdf/gmch215.pdf",
+              },
+            ],
+          },
+        ],
+
+        // CLASS 7 SCIENCE – NCERT Science
+        "7_Science": [
+          {
+            name: "NCERT Science – 7",
+            img: "https://ncert.nic.in/textbook/pdf/gesc2cc.jpg",
+            full: "https://ncert.nic.in/textbook/pdf/gesc2.pdf",
+            chapters: [
+              {
+                chName: "1: Nutrition in Plants",
+                link: "https://ncert.nic.in/textbook/pdf/gesc201.pdf",
+              },
+              {
+                chName: "2: Nutrition in Animals",
+                link: "https://ncert.nic.in/textbook/pdf/gesc202.pdf",
+              },
+              {
+                chName: "3: Heat",
+                link: "https://ncert.nic.in/textbook/pdf/gesc203.pdf",
+              },
+              {
+                chName: "4: Acids, Bases and Salts",
+                link: "https://ncert.nic.in/textbook/pdf/gesc204.pdf",
+              },
+              {
+                chName: "5: Physical and Chemical Changes",
+                link: "https://ncert.nic.in/textbook/pdf/gesc205.pdf",
+              },
+              {
+                chName: "6: Respiration in Organisms",
+                link: "https://ncert.nic.in/textbook/pdf/gesc206.pdf",
+              },
+              {
+                chName: "7: Transportation in Animals and Plants",
+                link: "https://ncert.nic.in/textbook/pdf/gesc207.pdf",
+              },
+              {
+                chName: "8: Reproduction in Plants",
+                link: "https://ncert.nic.in/textbook/pdf/gesc208.pdf",
+              },
+              {
+                chName: "9: Motion and Time",
+                link: "https://ncert.nic.in/textbook/pdf/gesc209.pdf",
+              },
+              {
+                chName: "10: Electric Current and its Effects",
+                link: "https://ncert.nic.in/textbook/pdf/gesc210.pdf",
+              },
+              {
+                chName: "11: Light",
+                link: "https://ncert.nic.in/textbook/pdf/gesc211.pdf",
+              },
+              {
+                chName: "12: Forests: Our Lifeline",
+                link: "https://ncert.nic.in/textbook/pdf/gesc212.pdf",
+              },
+              {
+                chName: "13: Wastewater Story",
+                link: "https://ncert.nic.in/textbook/pdf/gesc213.pdf",
+              },
+            ],
+          },
+        ],
+
+        // CLASS 7 SST – Social Science
+        "7_SST": [
+          {
+            name: "Social Science – 7",
+            img: "https://ncert.nic.in/textbook/pdf/gsso2cc.jpg",
+            full: "https://ncert.nic.in/textbook/pdf/gsso2.pdf",
+            chapters: [
+              {
+                chName: "History: Tracing Changes Through Thousand Years",
+                link: "https://ncert.nic.in/textbook/pdf/gsso201.pdf",
+              },
+              {
+                chName: "History: New Kings and Kingdoms",
+                link: "https://ncert.nic.in/textbook/pdf/gsso202.pdf",
+              },
+              {
+                chName: "History: Delhi Sultans",
+                link: "https://ncert.nic.in/textbook/pdf/gsso203.pdf",
+              },
+              {
+                chName: "History: The Mughal Empire",
+                link: "https://ncert.nic.in/textbook/pdf/gsso204.pdf",
+              },
+              {
+                chName: "History: Rulers and Buildings",
+                link: "https://ncert.nic.in/textbook/pdf/gsso205.pdf",
+              },
+              {
+                chName: "History: Towns, Traders and Craftsperson",
+                link: "https://ncert.nic.in/textbook/pdf/gsso206.pdf",
+              },
+              {
+                chName: "History: Tribes, Nomads and Settled Communities",
+                link: "https://ncert.nic.in/textbook/pdf/gsso207.pdf",
+              },
+              {
+                chName: "History: Devotional Paths to the Divine",
+                link: "https://ncert.nic.in/textbook/pdf/gsso208.pdf",
+              },
+              {
+                chName: "History: The Making of Regional Cultures",
+                link: "https://ncert.nic.in/textbook/pdf/gsso209.pdf",
+              },
+              {
+                chName: "History: Eighteenth-Century Political Formations",
+                link: "https://ncert.nic.in/textbook/pdf/gsso210.pdf",
+              },
+              {
+                chName: "Geography: Environment",
+                link: "https://ncert.nic.in/textbook/pdf/gsso211.pdf",
+              },
+              {
+                chName: "Geography: Inside Our Earth",
+                link: "https://ncert.nic.in/textbook/pdf/gsso212.pdf",
+              },
+              {
+                chName: "Geography: Our Changing Earth",
+                link: "https://ncert.nic.in/textbook/pdf/gsso213.pdf",
+              },
+              {
+                chName: "Geography: Air",
+                link: "https://ncert.nic.in/textbook/pdf/gsso214.pdf",
+              },
+              {
+                chName: "Geography: Water",
+                link: "https://ncert.nic.in/textbook/pdf/gsso215.pdf",
+              },
+              {
+                chName: "Geography: Natural Vegetation and Wildlife",
+                link: "https://ncert.nic.in/textbook/pdf/gsso216.pdf",
+              },
+              {
+                chName:
+                  "Geography: Human Environment - Settlement, Transport and Communication",
+                link: "https://ncert.nic.in/textbook/pdf/gsso217.pdf",
+              },
+              {
+                chName:
+                  "Geography: Human Environment Interactions - The Tropical and the Subtropical Region",
+                link: "https://ncert.nic.in/textbook/pdf/gsso218.pdf",
+              },
+              {
+                chName: "Geography: Life in the Deserts",
+                link: "https://ncert.nic.in/textbook/pdf/gsso219.pdf",
+              },
+              {
+                chName: "Civics: On Equality",
+                link: "https://ncert.nic.in/textbook/pdf/gsso220.pdf",
+              },
+              {
+                chName: "Civics: Role of the Government in Health",
+                link: "https://ncert.nic.in/textbook/pdf/gsso221.pdf",
+              },
+              {
+                chName: "Civics: How the State Government Works",
+                link: "https://ncert.nic.in/textbook/pdf/gsso222.pdf",
+              },
+              {
+                chName: "Civics: Growing up as Boys and Girls",
+                link: "https://ncert.nic.in/textbook/pdf/gsso223.pdf",
+              },
+              {
+                chName: "Civics: Women Change the World",
+                link: "https://ncert.nic.in/textbook/pdf/gsso224.pdf",
+              },
+              {
+                chName: "Civics: Understanding Media",
+                link: "https://ncert.nic.in/textbook/pdf/gsso225.pdf",
+              },
+              {
+                chName: "Civics: Markets Around Us",
+                link: "https://ncert.nic.in/textbook/pdf/gsso226.pdf",
+              },
+              {
+                chName: "Civics: A Shirt in the Market",
+                link: "https://ncert.nic.in/textbook/pdf/gsso227.pdf",
+              },
+              {
+                chName: "Civics: A Democratic Government India",
+                link: "https://ncert.nic.in/textbook/pdf/gsso228.pdf",
+              },
+            ],
+          },
+        ],
+        // CLASS 8 HINDI – Vasant
+        "8_Hindi": [
+          {
+            name: "Vasant (Hindi)",
+            img: "https://ncert.nic.in/textbook/pdf/hhvs1cc.jpg",
+            full: "https://ncert.nic.in/textbook/pdf/hhvs1.pdf",
+            chapters: [
+              {
+                chName: "1: लाख की चूड़ियाँ",
+                link: "https://ncert.nic.in/textbook/pdf/hhvs101.pdf",
+              },
+              {
+                chName: "2: बस की यात्रा",
+                link: "https://ncert.nic.in/textbook/pdf/hhvs102.pdf",
+              },
+              {
+                chName: "3: दीवानों की हस्ती",
+                link: "https://ncert.nic.in/textbook/pdf/hhvs103.pdf",
+              },
+              {
+                chName: "4: भगवान के डाकिए",
+                link: "https://ncert.nic.in/textbook/pdf/hhvs104.pdf",
+              },
+              {
+                chName: "5: कबीर के दोहे",
+                link: "https://ncert.nic.in/textbook/pdf/hhvs105.pdf",
+              },
+              {
+                chName: "6: एक टोकरी भर मिट्टी",
+                link: "https://ncert.nic.in/textbook/pdf/hhvs106.pdf",
+              },
+              {
+                chName: "7: मात बाँधो",
+                link: "https://ncert.nic.in/textbook/pdf/hhvs107.pdf",
+              },
+              {
+                chName: "8: नए मेहमान",
+                link: "https://ncert.nic.in/textbook/pdf/hhvs108.pdf",
+              },
+              {
+                chName: "9: आदमी का अनपढ़",
+                link: "https://ncert.nic.in/textbook/pdf/hhvs109.pdf",
+              },
+              {
+                chName: "10: तरुण के स्वप्न",
+                link: "https://ncert.nic.in/textbook/pdf/hhvs110.pdf",
+              },
+              {
+                chName: "11: सूरदास के पद",
+                link: "https://ncert.nic.in/textbook/pdf/hhvs111.pdf",
+              },
+              {
+                chName: "12: पानी की कहानी",
+                link: "https://ncert.nic.in/textbook/pdf/hhvs112.pdf",
+              },
+              {
+                chName: "13: बाज़ और साँप",
+                link: "https://ncert.nic.in/textbook/pdf/hhvs113.pdf",
+              },
+              {
+                chName: "14: टोपी",
+                link: "https://ncert.nic.in/textbook/pdf/hhvs114.pdf",
+              },
+            ],
+          },
+        ],
+
+        // CLASS 8 ENGLISH – Honeydew
+        "8_English": [
+          {
+            name: "Honeydew (English)",
+            img: "https://ncert.nic.in/textbook/pdf/aehd1cc.jpg",
+            full: "https://ncert.nic.in/textbook/pdf/aehd1.pdf",
+            chapters: [
+              {
+                chName: "1: The Best Christmas Present in the World",
+                link: "https://ncert.nic.in/textbook/pdf/aehd101.pdf",
+              },
+              {
+                chName: "2: The Tsunami",
+                link: "https://ncert.nic.in/textbook/pdf/aehd102.pdf",
+              },
+              {
+                chName: "3: Glimpses of the Past",
+                link: "https://ncert.nic.in/textbook/pdf/aehd103.pdf",
+              },
+              {
+                chName: "4: Bepin Choudhury's Lapse of Memory",
+                link: "https://ncert.nic.in/textbook/pdf/aehd104.pdf",
+              },
+              {
+                chName: "5: The Summit Within",
+                link: "https://ncert.nic.in/textbook/pdf/aehd105.pdf",
+              },
+              {
+                chName: "6: This is Jody's Fawn",
+                link: "https://ncert.nic.in/textbook/pdf/aehd106.pdf",
+              },
+              {
+                chName: "7: The Treasure Within",
+                link: "https://ncert.nic.in/textbook/pdf/aehd107.pdf",
+              },
+              {
+                chName: "8: The Great Stone Face - I",
+                link: "https://ncert.nic.in/textbook/pdf/aehd108.pdf",
+              },
+              {
+                chName: "9: The Great Stone Face - II",
+                link: "https://ncert.nic.in/textbook/pdf/aehd109.pdf",
+              },
+              {
+                chName: "10: The Ant and the Cricket",
+                link: "https://ncert.nic.in/textbook/pdf/aehd110.pdf",
+              },
+            ],
+          },
+        ],
+
+        // CLASS 8 MATHS – NCERT Maths
+        "8_Maths": [
+          {
+            name: "NCERT Mathematics – 8",
+            img: "https://ncert.nic.in/textbook/pdf/gmch3cc.jpg",
+            full: "https://ncert.nic.in/textbook/pdf/gmch3.pdf",
+            chapters: [
+              {
+                chName: "1: Rational Numbers",
+                link: "https://ncert.nic.in/textbook/pdf/gmch301.pdf",
+              },
+              {
+                chName: "2: Linear Equations in One Variable",
+                link: "https://ncert.nic.in/textbook/pdf/gmch302.pdf",
+              },
+              {
+                chName: "3: Understanding Quadrilaterals",
+                link: "https://ncert.nic.in/textbook/pdf/gmch303.pdf",
+              },
+              {
+                chName: "4: Practical Geometry",
+                link: "https://ncert.nic.in/textbook/pdf/gmch304.pdf",
+              },
+              {
+                chName: "5: Data Handling",
+                link: "https://ncert.nic.in/textbook/pdf/gmch305.pdf",
+              },
+              {
+                chName: "6: Squares and Square Roots",
+                link: "https://ncert.nic.in/textbook/pdf/gmch306.pdf",
+              },
+              {
+                chName: "7: Cube and Cube Roots",
+                link: "https://ncert.nic.in/textbook/pdf/gmch307.pdf",
+              },
+              {
+                chName: "8: Comparing Quantities",
+                link: "https://ncert.nic.in/textbook/pdf/gmch308.pdf",
+              },
+              {
+                chName: "9: Algebraic Expressions and Identities",
+                link: "https://ncert.nic.in/textbook/pdf/gmch309.pdf",
+              },
+              {
+                chName: "10: Visualising Solid Shapes",
+                link: "https://ncert.nic.in/textbook/pdf/gmch310.pdf",
+              },
+              {
+                chName: "11: Mensuration",
+                link: "https://ncert.nic.in/textbook/pdf/gmch311.pdf",
+              },
+              {
+                chName: "12: Exponents and Powers",
+                link: "https://ncert.nic.in/textbook/pdf/gmch312.pdf",
+              },
+              {
+                chName: "13: Direct and Inverse Proportions",
+                link: "https://ncert.nic.in/textbook/pdf/gmch313.pdf",
+              },
+              {
+                chName: "14: Factorisation",
+                link: "https://ncert.nic.in/textbook/pdf/gmch314.pdf",
+              },
+              {
+                chName: "15: Introduction to Graphs",
+                link: "https://ncert.nic.in/textbook/pdf/gmch315.pdf",
+              },
+              {
+                chName: "16: Playing with Numbers",
+                link: "https://ncert.nic.in/textbook/pdf/gmch316.pdf",
+              },
+            ],
+          },
+        ],
+
+        // CLASS 8 SCIENCE – NCERT Science
+        "8_Science": [
+          {
+            name: "NCERT Science – 8",
+            img: "https://ncert.nic.in/textbook/pdf/gesc3cc.jpg",
+            full: "https://ncert.nic.in/textbook/pdf/gesc3.pdf",
+            chapters: [
+              {
+                chName: "1: Crop Production and Management",
+                link: "https://ncert.nic.in/textbook/pdf/gesc301.pdf",
+              },
+              {
+                chName: "2: Microorganisms: Friend and Foe",
+                link: "https://ncert.nic.in/textbook/pdf/gesc302.pdf",
+              },
+              {
+                chName: "3: Synthetic Fibres and Plastics",
+                link: "https://ncert.nic.in/textbook/pdf/gesc303.pdf",
+              },
+              {
+                chName: "4: Materials: Metals and Non-Metals",
+                link: "https://ncert.nic.in/textbook/pdf/gesc304.pdf",
+              },
+              {
+                chName: "5: Coal and Petroleum",
+                link: "https://ncert.nic.in/textbook/pdf/gesc305.pdf",
+              },
+              {
+                chName: "6: Combustion and Flame",
+                link: "https://ncert.nic.in/textbook/pdf/gesc306.pdf",
+              },
+              {
+                chName: "7: Conservation of Plants and Animals",
+                link: "https://ncert.nic.in/textbook/pdf/gesc307.pdf",
+              },
+              {
+                chName: "8: Cell - Structure and Functions",
+                link: "https://ncert.nic.in/textbook/pdf/gesc308.pdf",
+              },
+              {
+                chName: "9: Reproduction in Animals",
+                link: "https://ncert.nic.in/textbook/pdf/gesc309.pdf",
+              },
+              {
+                chName: "10: Reaching the Age of Adolescence",
+                link: "https://ncert.nic.in/textbook/pdf/gesc310.pdf",
+              },
+              {
+                chName: "11: Force and Pressure",
+                link: "https://ncert.nic.in/textbook/pdf/gesc311.pdf",
+              },
+              {
+                chName: "12: Friction",
+                link: "https://ncert.nic.in/textbook/pdf/gesc312.pdf",
+              },
+              {
+                chName: "13: Sound",
+                link: "https://ncert.nic.in/textbook/pdf/gesc313.pdf",
+              },
+              {
+                chName: "14: Chemical Effects of Electric Current",
+                link: "https://ncert.nic.in/textbook/pdf/gesc314.pdf",
+              },
+              {
+                chName: "15: Some Natural Phenomena",
+                link: "https://ncert.nic.in/textbook/pdf/gesc315.pdf",
+              },
+              {
+                chName: "16: Light",
+                link: "https://ncert.nic.in/textbook/pdf/gesc316.pdf",
+              },
+              {
+                chName: "17: Stars and the Solar System",
+                link: "https://ncert.nic.in/textbook/pdf/gesc317.pdf",
+              },
+              {
+                chName: "18: Pollution of Air and Water",
+                link: "https://ncert.nic.in/textbook/pdf/gesc318.pdf",
+              },
+            ],
+          },
+        ],
+
+        // CLASS 8 SST – Social Science
+        "8_SST": [
+          {
+            name: "Social Science – 8",
+            img: "https://ncert.nic.in/textbook/pdf/gsso3cc.jpg",
+            full: "https://ncert.nic.in/textbook/pdf/gsso3.pdf",
+            chapters: [
+              {
+                chName: "History: How, When and Where",
+                link: "https://ncert.nic.in/textbook/pdf/gsso301.pdf",
+              },
+              {
+                chName: "History: From Trade to Territory",
+                link: "https://ncert.nic.in/textbook/pdf/gsso302.pdf",
+              },
+              {
+                chName: "History: Ruling the Countryside",
+                link: "https://ncert.nic.in/textbook/pdf/gsso303.pdf",
+              },
+              {
+                chName:
+                  "History: Tribals, Dikus and the Vision of a Golden Age",
+                link: "https://ncert.nic.in/textbook/pdf/gsso304.pdf",
+              },
+              {
+                chName: "History: When People Rebel",
+                link: "https://ncert.nic.in/textbook/pdf/gsso305.pdf",
+              },
+              {
+                chName: "History: Weavers, Iron Smelters and Factory Owners",
+                link: "https://ncert.nic.in/textbook/pdf/gsso306.pdf",
+              },
+              {
+                chName:
+                  "History: Civilising the 'Native', Educating the Nation",
+                link: "https://ncert.nic.in/textbook/pdf/gsso307.pdf",
+              },
+              {
+                chName: "History: Women, Caste and Reform",
+                link: "https://ncert.nic.in/textbook/pdf/gsso308.pdf",
+              },
+              {
+                chName:
+                  "History: The Making of the National Movement 1870s-1947",
+                link: "https://ncert.nic.in/textbook/pdf/gsso309.pdf",
+              },
+              {
+                chName: "History: India After Independence",
+                link: "https://ncert.nic.in/textbook/pdf/gsso310.pdf",
+              },
+              {
+                chName: "Geography: Resources",
+                link: "https://ncert.nic.in/textbook/pdf/gsso311.pdf",
+              },
+              {
+                chName:
+                  "Geography: Land, Soil, Water, Natural Vegetation and Wildlife Resources",
+                link: "https://ncert.nic.in/textbook/pdf/gsso312.pdf",
+              },
+              {
+                chName: "Geography: Mineral and Power Resources",
+                link: "https://ncert.nic.in/textbook/pdf/gsso313.pdf",
+              },
+              {
+                chName: "Geography: Agriculture",
+                link: "https://ncert.nic.in/textbook/pdf/gsso314.pdf",
+              },
+              {
+                chName: "Geography: Industries",
+                link: "https://ncert.nic.in/textbook/pdf/gsso315.pdf",
+              },
+              {
+                chName: "Geography: Human Resources",
+                link: "https://ncert.nic.in/textbook/pdf/gsso316.pdf",
+              },
+              {
+                chName: "Civics: The Indian Constitution",
+                link: "https://ncert.nic.in/textbook/pdf/gsso317.pdf",
+              },
+              {
+                chName: "Civics: Understanding Secularism",
+                link: "https://ncert.nic.in/textbook/pdf/gsso318.pdf",
+              },
+              {
+                chName: "Civics: Why do we need a Parliament?",
+                link: "https://ncert.nic.in/textbook/pdf/gsso319.pdf",
+              },
+              {
+                chName: "Civics: Understanding Laws",
+                link: "https://ncert.nic.in/textbook/pdf/gsso320.pdf",
+              },
+              {
+                chName: "Civics: Judiciary",
+                link: "https://ncert.nic.in/textbook/pdf/gsso321.pdf",
+              },
+              {
+                chName: "Civics: Understanding Our Criminal Justice System",
+                link: "https://ncert.nic.in/textbook/pdf/gsso322.pdf",
+              },
+              {
+                chName: "Civics: Understanding Marginalisation",
+                link: "https://ncert.nic.in/textbook/pdf/gsso323.pdf",
+              },
+              {
+                chName: "Civics: Confronting Marginalisation",
+                link: "https://ncert.nic.in/textbook/pdf/gsso324.pdf",
+              },
+              {
+                chName: "Civics: Public Facilities",
+                link: "https://ncert.nic.in/textbook/pdf/gsso325.pdf",
+              },
+            ],
+          },
+        ],
+
+        // CLASS 9 HINDI – Kshitij
+        "9_Hindi": [
+          {
+            name: "Kshitij (Hindi)",
+            img: "https://ncert.nic.in/textbook/pdf/ikhk1cc.jpg",
+            full: "https://ncert.nic.in/textbook/pdf/ikhk1.pdf",
+            chapters: [
+              {
+                chName: "1: धरती माँ",
+                link: "https://ncert.nic.in/textbook/pdf/ikhk101.pdf",
+              },
+              {
+                chName: "2: राम लक्ष्मण परशुराम संवाद",
+                link: "https://ncert.nic.in/textbook/pdf/ikhk102.pdf",
+              },
+              {
+                chName: "3: अकबर के दरबार में कबीर",
+                link: "https://ncert.nic.in/textbook/pdf/ikhk103.pdf",
+              },
+              {
+                chName: "4: सड़क भागलपुर",
+                link: "https://ncert.nic.in/textbook/pdf/ikhk104.pdf",
+              },
+              {
+                chName: "5: पथिक",
+                link: "https://ncert.nic.in/textbook/pdf/ikhk105.pdf",
+              },
+              {
+                chName: "6: ईश्वर चंद्र विद्यासागर",
+                link: "https://ncert.nic.in/textbook/pdf/ikhk106.pdf",
+              },
+              {
+                chName: "7: छाया मत छाँह",
+                link: "https://ncert.nic.in/textbook/pdf/ikhk107.pdf",
+              },
+              {
+                chName: "8: चन्द्र गुप्त विक्रमादित्य",
+                link: "https://ncert.nic.in/textbook/pdf/ikhk108.pdf",
+              },
+              {
+                chName: "9: शत्रु का प्रलोभन",
+                link: "https://ncert.nic.in/textbook/pdf/ikhk109.pdf",
+              },
+              {
+                chName: "10: अट्टहास",
+                link: "https://ncert.nic.in/textbook/pdf/ikhk110.pdf",
+              },
+              {
+                chName: "11: अब कैसे छूटे राम",
+                link: "https://ncert.nic.in/textbook/pdf/ikhk111.pdf",
+              },
+              {
+                chName: "12: अग्नि पथ",
+                link: "https://ncert.nic.in/textbook/pdf/ikhk112.pdf",
+              },
+              {
+                chName: "13: मीरा के पद",
+                link: "https://ncert.nic.in/textbook/pdf/ikhk113.pdf",
+              },
+              {
+                chName: "14: तुम कब जाओगे अतीत",
+                link: "https://ncert.nic.in/textbook/pdf/ikhk114.pdf",
+              },
+              {
+                chName: "15: तुम्हें भूल न पायेंगे",
+                link: "https://ncert.nic.in/textbook/pdf/ikhk115.pdf",
+              },
+              {
+                chName: "16: पिता",
+                link: "https://ncert.nic.in/textbook/pdf/ikhk116.pdf",
+              },
+              {
+                chName: "17: भारतीय संस्कृति के विशेषताएँ",
+                link: "https://ncert.nic.in/textbook/pdf/ikhk117.pdf",
+              },
+            ],
+          },
+        ],
+
+        // CLASS 9 ENGLISH – Beehive
+        "9_English": [
+          {
+            name: "Beehive (English)",
+            img: "https://ncert.nic.in/textbook/pdf/aebh1cc.jpg",
+            full: "https://ncert.nic.in/textbook/pdf/aebh1.pdf",
+            chapters: [
+              {
+                chName: "1: The Fun They Had",
+                link: "https://ncert.nic.in/textbook/pdf/aebh101.pdf",
+              },
+              {
+                chName: "2: The Sound of Music",
+                link: "https://ncert.nic.in/textbook/pdf/aebh102.pdf",
+              },
+              {
+                chName: "3: The Little Girl",
+                link: "https://ncert.nic.in/textbook/pdf/aebh103.pdf",
+              },
+              {
+                chName: "4: A Truly Beautiful Mind",
+                link: "https://ncert.nic.in/textbook/pdf/aebh104.pdf",
+              },
+              {
+                chName: "5: The Snake and the Mirror",
+                link: "https://ncert.nic.in/textbook/pdf/aebh105.pdf",
+              },
+              {
+                chName: "6: My Childhood",
+                link: "https://ncert.nic.in/textbook/pdf/aebh106.pdf",
+              },
+              {
+                chName: "7: Reach for the Top",
+                link: "https://ncert.nic.in/textbook/pdf/aebh107.pdf",
+              },
+              {
+                chName: "8: The Sermon at Benares",
+                link: "https://ncert.nic.in/textbook/pdf/aebh108.pdf",
+              },
+              {
+                chName: "9: The Bond of Love",
+                link: "https://ncert.nic.in/textbook/pdf/aebh109.pdf",
+              },
+              {
+                chName: "10: Nek Chand's Scrap Metal Wonders",
+                link: "https://ncert.nic.in/textbook/pdf/aebh110.pdf",
+              },
+              {
+                chName: "11: Poet and Pancakes",
+                link: "https://ncert.nic.in/textbook/pdf/aebh111.pdf",
+              },
+            ],
+          },
+        ],
+
+        // CLASS 9 MATHS – NCERT Maths
+        "9_Maths": [
+          {
+            name: "NCERT Mathematics – 9",
+            img: "https://ncert.nic.in/textbook/pdf/gmch4cc.jpg",
+            full: "https://ncert.nic.in/textbook/pdf/gmch4.pdf",
+            chapters: [
+              {
+                chName: "1: Number Systems",
+                link: "https://ncert.nic.in/textbook/pdf/gmch401.pdf",
+              },
+              {
+                chName: "2: Polynomials",
+                link: "https://ncert.nic.in/textbook/pdf/gmch402.pdf",
+              },
+              {
+                chName: "3: Coordinate Geometry",
+                link: "https://ncert.nic.in/textbook/pdf/gmch403.pdf",
+              },
+              {
+                chName: "4: Linear Equations in Two Variables",
+                link: "https://ncert.nic.in/textbook/pdf/gmch404.pdf",
+              },
+              {
+                chName: "5: Introduction to Euclid's Geometry",
+                link: "https://ncert.nic.in/textbook/pdf/gmch405.pdf",
+              },
+              {
+                chName: "6: Lines and Angles",
+                link: "https://ncert.nic.in/textbook/pdf/gmch406.pdf",
+              },
+              {
+                chName: "7: Triangles",
+                link: "https://ncert.nic.in/textbook/pdf/gmch407.pdf",
+              },
+              {
+                chName: "8: Quadrilaterals",
+                link: "https://ncert.nic.in/textbook/pdf/gmch408.pdf",
+              },
+              {
+                chName: "9: Areas of Parallelograms and Triangles",
+                link: "https://ncert.nic.in/textbook/pdf/gmch409.pdf",
+              },
+              {
+                chName: "10: Circles",
+                link: "https://ncert.nic.in/textbook/pdf/gmch410.pdf",
+              },
+              {
+                chName: "11: Constructions",
+                link: "https://ncert.nic.in/textbook/pdf/gmch411.pdf",
+              },
+              {
+                chName: "12: Heron's Formula",
+                link: "https://ncert.nic.in/textbook/pdf/gmch412.pdf",
+              },
+              {
+                chName: "13: Surface Areas and Volumes",
+                link: "https://ncert.nic.in/textbook/pdf/gmch413.pdf",
+              },
+              {
+                chName: "14: Statistics",
+                link: "https://ncert.nic.in/textbook/pdf/gmch414.pdf",
+              },
+              {
+                chName: "15: Probability",
+                link: "https://ncert.nic.in/textbook/pdf/gmch415.pdf",
+              },
+            ],
+          },
+        ],
+
+        // CLASS 9 SCIENCE – NCERT Science
+        "9_Science": [
+          {
+            name: "NCERT Science – 9",
+            img: "https://ncert.nic.in/textbook/pdf/gesc4cc.jpg",
+            full: "https://ncert.nic.in/textbook/pdf/gesc4.pdf",
+            chapters: [
+              {
+                chName: "1: Matter in Our Surroundings",
+                link: "https://ncert.nic.in/textbook/pdf/gesc401.pdf",
+              },
+              {
+                chName: "2: Is Matter Around Us Pure?",
+                link: "https://ncert.nic.in/textbook/pdf/gesc402.pdf",
+              },
+              {
+                chName: "3: Atoms and Molecules",
+                link: "https://ncert.nic.in/textbook/pdf/gesc403.pdf",
+              },
+              {
+                chName: "4: Structure of the Atom",
+                link: "https://ncert.nic.in/textbook/pdf/gesc404.pdf",
+              },
+              {
+                chName: "5: The Fundamental Unit of Life",
+                link: "https://ncert.nic.in/textbook/pdf/gesc405.pdf",
+              },
+              {
+                chName: "6: Tissues",
+                link: "https://ncert.nic.in/textbook/pdf/gesc406.pdf",
+              },
+              {
+                chName: "7: Motion",
+                link: "https://ncert.nic.in/textbook/pdf/gesc407.pdf",
+              },
+              {
+                chName: "8: Force and Laws of Motion",
+                link: "https://ncert.nic.in/textbook/pdf/gesc408.pdf",
+              },
+              {
+                chName: "9: Gravitation",
+                link: "https://ncert.nic.in/textbook/pdf/gesc409.pdf",
+              },
+              {
+                chName: "10: Work and Energy",
+                link: "https://ncert.nic.in/textbook/pdf/gesc410.pdf",
+              },
+              {
+                chName: "11: Sound",
+                link: "https://ncert.nic.in/textbook/pdf/gesc411.pdf",
+              },
+            ],
+          },
+        ],
+
+        // CLASS 9 SST – Social Science
+        "9_SST": [
+          {
+            name: "Social Science – 9",
+            img: "https://ncert.nic.in/textbook/pdf/gsso4cc.jpg",
+            full: "https://ncert.nic.in/textbook/pdf/gsso4.pdf",
+            chapters: [
+              {
+                chName: "History: The French Revolution",
+                link: "https://ncert.nic.in/textbook/pdf/gsso401.pdf",
+              },
+              {
+                chName:
+                  "History: Socialism in Europe and the Russian Revolution",
+                link: "https://ncert.nic.in/textbook/pdf/gsso402.pdf",
+              },
+              {
+                chName: "History: Nazism and the Rise of Hitler",
+                link: "https://ncert.nic.in/textbook/pdf/gsso403.pdf",
+              },
+              {
+                chName: "History: Forest Society and Colonialism",
+                link: "https://ncert.nic.in/textbook/pdf/gsso404.pdf",
+              },
+              {
+                chName: "History: Pastoralists in the Modern World",
+                link: "https://ncert.nic.in/textbook/pdf/gsso405.pdf",
+              },
+              {
+                chName: "Geography: India - Size and Location",
+                link: "https://ncert.nic.in/textbook/pdf/gsso406.pdf",
+              },
+              {
+                chName: "Geography: Physical Features of India",
+                link: "https://ncert.nic.in/textbook/pdf/gsso407.pdf",
+              },
+              {
+                chName: "Geography: Drainage",
+                link: "https://ncert.nic.in/textbook/pdf/gsso408.pdf",
+              },
+              {
+                chName: "Geography: Climate",
+                link: "https://ncert.nic.in/textbook/pdf/gsso409.pdf",
+              },
+              {
+                chName: "Geography: Natural Vegetation and Wildlife",
+                link: "https://ncert.nic.in/textbook/pdf/gsso410.pdf",
+              },
+              {
+                chName: "Geography: Population",
+                link: "https://ncert.nic.in/textbook/pdf/gsso411.pdf",
+              },
+              {
+                chName: "Civics: What is Democracy? Why Democracy?",
+                link: "https://ncert.nic.in/textbook/pdf/gsso412.pdf",
+              },
+              {
+                chName: "Civics: Constitutional Design",
+                link: "https://ncert.nic.in/textbook/pdf/gsso413.pdf",
+              },
+              {
+                chName: "Civics: Electoral Politics",
+                link: "https://ncert.nic.in/textbook/pdf/gsso414.pdf",
+              },
+              {
+                chName: "Civics: Working of Institutions",
+                link: "https://ncert.nic.in/textbook/pdf/gsso415.pdf",
+              },
+              {
+                chName: "Civics: Democratic Rights",
+                link: "https://ncert.nic.in/textbook/pdf/gsso416.pdf",
+              },
+              {
+                chName: "Economics: The Story of Village Palampur",
+                link: "https://ncert.nic.in/textbook/pdf/gsso417.pdf",
+              },
+              {
+                chName: "Economics: People as Resource",
+                link: "https://ncert.nic.in/textbook/pdf/gsso418.pdf",
+              },
+              {
+                chName: "Economics: Poverty as a Challenge",
+                link: "https://ncert.nic.in/textbook/pdf/gsso419.pdf",
+              },
+              {
+                chName: "Economics: Food Security in India",
+                link: "https://ncert.nic.in/textbook/pdf/gsso420.pdf",
+              },
+            ],
+          },
+        ],
+        // CLASS 10 HINDI – Kshitij
+        "10_Hindi": [
+          {
+            name: "Kshitij (Hindi)",
+            img: "https://ncert.nic.in/textbook/pdf/jhks1cc.jpg",
+            full: "https://ncert.nic.in/textbook/pdf/jhks1.pdf",
+            chapters: [
+              {
+                chName: "1: सूरदास के पद",
+                link: "https://ncert.nic.in/textbook/pdf/jhks101.pdf",
+              },
+              {
+                chName: "2: अब तो जागो रघुराई",
+                link: "https://ncert.nic.in/textbook/pdf/jhks102.pdf",
+              },
+              {
+                chName: "3: पर्वत प्रदेश में",
+                link: "https://ncert.nic.in/textbook/pdf/jhks103.pdf",
+              },
+              {
+                chName: "4: चंद्र गहना रानी",
+                link: "https://ncert.nic.in/textbook/pdf/jhks104.pdf",
+              },
+              {
+                chName: "5: अटवाले",
+                link: "https://ncert.nic.in/textbook/pdf/jhks105.pdf",
+              },
+              {
+                chName: "6: हार की जीत",
+                link: "https://ncert.nic.in/textbook/pdf/jhks106.pdf",
+              },
+              {
+                chName: "7: दानवीर कर्ण",
+                link: "https://ncert.nic.in/textbook/pdf/jhks107.pdf",
+              },
+              {
+                chName: "8: नमक इस्का दवा",
+                link: "https://ncert.nic.in/textbook/pdf/jhks108.pdf",
+              },
+              {
+                chName: "9: ईश्वर चंद्र विद्यासागर",
+                link: "https://ncert.nic.in/textbook/pdf/jhks109.pdf",
+              },
+              {
+                chName: "10: जब सूरज चमका",
+                link: "https://ncert.nic.in/textbook/pdf/jhks110.pdf",
+              },
+              {
+                chName: "11: गोदान भाग 1",
+                link: "https://ncert.nic.in/textbook/pdf/jhks111.pdf",
+              },
+              {
+                chName: "12: गोदान भाग 2",
+                link: "https://ncert.nic.in/textbook/pdf/jhks112.pdf",
+              },
+            ],
+          },
+        ],
+
+        // CLASS 10 HINDI – Sparsh
+        "10_Hindi2": [
+          {
+            name: "Sparsh (Hindi)",
+            img: "https://ncert.nic.in/textbook/pdf/jhsp1cc.jpg",
+            full: "https://ncert.nic.in/textbook/pdf/jhsp1.pdf",
+            chapters: [
+              {
+                chName: "1: माता का अंचल",
+                link: "https://ncert.nic.in/textbook/pdf/jhsp101.pdf",
+              },
+              {
+                chName: "2: साना-साना हाथ जोड़ि",
+                link: "https://ncert.nic.in/textbook/pdf/jhsp102.pdf",
+              },
+              {
+                chName: "3: मैं क्यों लिखता हूँ?",
+                link: "https://ncert.nic.in/textbook/pdf/jhsp103.pdf",
+              },
+              {
+                chName: "4: सरस्वती का आश्रम",
+                link: "https://ncert.nic.in/textbook/pdf/jhsp104.pdf",
+              },
+              {
+                chName: "5: एणिको",
+                link: "https://ncert.nic.in/textbook/pdf/jhsp105.pdf",
+              },
+              {
+                chName: "6: मीठाईवाला",
+                link: "https://ncert.nic.in/textbook/pdf/jhsp106.pdf",
+              },
+              {
+                chName: "7: लखनवी अंदाज़",
+                link: "https://ncert.nic.in/textbook/pdf/jhsp107.pdf",
+              },
+              {
+                chName: "8: एक कहानी यह भी",
+                link: "https://ncert.nic.in/textbook/pdf/jhsp108.pdf",
+              },
+              {
+                chName: "9: हरिवंशराय बच्चन",
+                link: "https://ncert.nic.in/textbook/pdf/jhsp109.pdf",
+              },
+              {
+                chName: "10: यह दाता दिन दीन के",
+                link: "https://ncert.nic.in/textbook/pdf/jhsp110.pdf",
+              },
+              {
+                chName: "11: भारतीय संस्कृति के विशेषताएँ",
+                link: "https://ncert.nic.in/textbook/pdf/jhsp111.pdf",
+              },
+            ],
+          },
+        ],
+
+        // CLASS 10 ENGLISH – First Flight
+        "10_English": [
+          {
+            name: "First Flight (English)",
+            img: "https://ncert.nic.in/textbook/pdf/aeff1cc.jpg",
+            full: "https://ncert.nic.in/textbook/pdf/aeff1.pdf",
+            chapters: [
+              {
+                chName: "1: A Letter to God",
+                link: "https://ncert.nic.in/textbook/pdf/aeff101.pdf",
+              },
+              {
+                chName: "2: Nelson Mandela: Long Walk to Freedom",
+                link: "https://ncert.nic.in/textbook/pdf/aeff102.pdf",
+              },
+              {
+                chName: "3: Two Stories about Flying",
+                link: "https://ncert.nic.in/textbook/pdf/aeff103.pdf",
+              },
+              {
+                chName: "4: From the Diary of Anne Frank",
+                link: "https://ncert.nic.in/textbook/pdf/aeff104.pdf",
+              },
+              {
+                chName: "5: Glimpses of India",
+                link: "https://ncert.nic.in/textbook/pdf/aeff105.pdf",
+              },
+              {
+                chName: "6: Mijbil the Otter",
+                link: "https://ncert.nic.in/textbook/pdf/aeff106.pdf",
+              },
+              {
+                chName: "7: Madam Rides the Bus",
+                link: "https://ncert.nic.in/textbook/pdf/aeff107.pdf",
+              },
+              {
+                chName: "8: The Sermon at Benares",
+                link: "https://ncert.nic.in/textbook/pdf/aeff108.pdf",
+              },
+              {
+                chName: "9: The Proposal",
+                link: "https://ncert.nic.in/textbook/pdf/aeff109.pdf",
+              },
+              {
+                chName: "11: The Dear Departed",
+                link: "https://ncert.nic.in/textbook/pdf/aeff111.pdf",
+              },
+            ],
+          },
+        ],
+
+        // CLASS 10 MATHS – NCERT Maths
+        "10_Maths": [
+          {
+            name: "NCERT Mathematics – 10",
+            img: "https://ncert.nic.in/textbook/pdf/gmch5cc.jpg",
+            full: "https://ncert.nic.in/textbook/pdf/gmch5.pdf",
+            chapters: [
+              {
+                chName: "1: Real Numbers",
+                link: "https://ncert.nic.in/textbook/pdf/gmch501.pdf",
+              },
+              {
+                chName: "2: Polynomials",
+                link: "https://ncert.nic.in/textbook/pdf/gmch502.pdf",
+              },
+              {
+                chName: "3: Pair of Linear Equations in Two Variables",
+                link: "https://ncert.nic.in/textbook/pdf/gmch503.pdf",
+              },
+              {
+                chName: "4: Quadratic Equations",
+                link: "https://ncert.nic.in/textbook/pdf/gmch504.pdf",
+              },
+              {
+                chName: "5: Arithmetic Progressions",
+                link: "https://ncert.nic.in/textbook/pdf/gmch505.pdf",
+              },
+              {
+                chName: "6: Triangles",
+                link: "https://ncert.nic.in/textbook/pdf/gmch506.pdf",
+              },
+              {
+                chName: "7: Coordinate Geometry",
+                link: "https://ncert.nic.in/textbook/pdf/gmch507.pdf",
+              },
+              {
+                chName: "8: Introduction to Trigonometry",
+                link: "https://ncert.nic.in/textbook/pdf/gmch508.pdf",
+              },
+              {
+                chName: "9: Some Applications of Trigonometry",
+                link: "https://ncert.nic.in/textbook/pdf/gmch509.pdf",
+              },
+              {
+                chName: "10: Circles",
+                link: "https://ncert.nic.in/textbook/pdf/gmch510.pdf",
+              },
+              {
+                chName: "11: Areas Related to Circles",
+                link: "https://ncert.nic.in/textbook/pdf/gmch511.pdf",
+              },
+              {
+                chName: "12: Surface Areas and Volumes",
+                link: "https://ncert.nic.in/textbook/pdf/gmch512.pdf",
+              },
+              {
+                chName: "13: Statistics",
+                link: "https://ncert.nic.in/textbook/pdf/gmch513.pdf",
+              },
+              {
+                chName: "14: Probability",
+                link: "https://ncert.nic.in/textbook/pdf/gmch514.pdf",
+              },
+            ],
+          },
+        ],
+
+        // CLASS 10 SCIENCE – NCERT Science
+        "10_Science": [
+          {
+            name: "NCERT Science – 10",
+            img: "https://ncert.nic.in/textbook/pdf/gesc5cc.jpg",
+            full: "https://ncert.nic.in/textbook/pdf/gesc5.pdf",
+            chapters: [
+              {
+                chName: "1: Chemical Reactions and Equations",
+                link: "https://ncert.nic.in/textbook/pdf/gesc501.pdf",
+              },
+              {
+                chName: "2: Acids, Bases and Salts",
+                link: "https://ncert.nic.in/textbook/pdf/gesc502.pdf",
+              },
+              {
+                chName: "3: Metals and Non-metals",
+                link: "https://ncert.nic.in/textbook/pdf/gesc503.pdf",
+              },
+              {
+                chName: "4: Carbon and its Compounds",
+                link: "https://ncert.nic.in/textbook/pdf/gesc504.pdf",
+              },
+              {
+                chName: "5: Periodic Classification of Elements",
+                link: "https://ncert.nic.in/textbook/pdf/gesc505.pdf",
+              },
+              {
+                chName: "6: Life Processes",
+                link: "https://ncert.nic.in/textbook/pdf/gesc506.pdf",
+              },
+              {
+                chName: "7: Control and Coordination",
+                link: "https://ncert.nic.in/textbook/pdf/gesc507.pdf",
+              },
+              {
+                chName: "8: How do Organisms Reproduce?",
+                link: "https://ncert.nic.in/textbook/pdf/gesc508.pdf",
+              },
+              {
+                chName: "9: Heredity and Evolution",
+                link: "https://ncert.nic.in/textbook/pdf/gesc509.pdf",
+              },
+              {
+                chName: "10: Light - Reflection and Refraction",
+                link: "https://ncert.nic.in/textbook/pdf/gesc510.pdf",
+              },
+              {
+                chName: "11: Human Eye and Colourful World",
+                link: "https://ncert.nic.in/textbook/pdf/gesc511.pdf",
+              },
+              {
+                chName: "12: Electricity",
+                link: "https://ncert.nic.in/textbook/pdf/gesc512.pdf",
+              },
+              {
+                chName: "13: Magnetic Effects of Electric Current",
+                link: "https://ncert.nic.in/textbook/pdf/gesc513.pdf",
+              },
+              {
+                chName: "14: Sources of Energy",
+                link: "https://ncert.nic.in/textbook/pdf/gesc514.pdf",
+              },
+              {
+                chName: "15: Our Environment",
+                link: "https://ncert.nic.in/textbook/pdf/gesc515.pdf",
+              },
+              {
+                chName: "16: Sustainable Management of Natural Resources",
+                link: "https://ncert.nic.in/textbook/pdf/gesc516.pdf",
+              },
+            ],
+          },
+        ],
+
+        // CLASS 10 SST – Social Science
+        "10_SST": [
+          {
+            name: "Social Science – 10",
+            img: "https://ncert.nic.in/textbook/pdf/gsso5cc.jpg",
+            full: "https://ncert.nic.in/textbook/pdf/gsso5.pdf",
+            chapters: [
+              {
+                chName: "History: The Rise of Nationalism in Europe",
+                link: "https://ncert.nic.in/textbook/pdf/gsso501.pdf",
+              },
+              {
+                chName: "History: Nationalism in India",
+                link: "https://ncert.nic.in/textbook/pdf/gsso502.pdf",
+              },
+              {
+                chName: "History: The Making of a Global World",
+                link: "https://ncert.nic.in/textbook/pdf/gsso503.pdf",
+              },
+              {
+                chName: "History: The Age of Industrialisation",
+                link: "https://ncert.nic.in/textbook/pdf/gsso504.pdf",
+              },
+              {
+                chName: "History: Print Culture and the Modern World",
+                link: "https://ncert.nic.in/textbook/pdf/gsso505.pdf",
+              },
+              {
+                chName: "Geography: Resources and Development",
+                link: "https://ncert.nic.in/textbook/pdf/gsso506.pdf",
+              },
+              {
+                chName: "Geography: Forest and Wildlife Resources",
+                link: "https://ncert.nic.in/textbook/pdf/gsso507.pdf",
+              },
+              {
+                chName: "Geography: Water Resources",
+                link: "https://ncert.nic.in/textbook/pdf/gsso508.pdf",
+              },
+              {
+                chName: "Geography: Agriculture",
+                link: "https://ncert.nic.in/textbook/pdf/gsso509.pdf",
+              },
+              {
+                chName: "Geography: Minerals and Energy Resources",
+                link: "https://ncert.nic.in/textbook/pdf/gsso510.pdf",
+              },
+              {
+                chName: "Geography: Manufacturing Industries",
+                link: "https://ncert.nic.in/textbook/pdf/gsso511.pdf",
+              },
+              {
+                chName: "Geography: Life Lines of National Economy",
+                link: "https://ncert.nic.in/textbook/pdf/gsso512.pdf",
+              },
+              {
+                chName: "Civics: Power Sharing",
+                link: "https://ncert.nic.in/textbook/pdf/gsso513.pdf",
+              },
+              {
+                chName: "Civics: Federalism",
+                link: "https://ncert.nic.in/textbook/pdf/gsso514.pdf",
+              },
+              {
+                chName: "Civics: Gender, Religion and Caste",
+                link: "https://ncert.nic.in/textbook/pdf/gsso515.pdf",
+              },
+              {
+                chName: "Civics: Political Parties",
+                link: "https://ncert.nic.in/textbook/pdf/gsso516.pdf",
+              },
+              {
+                chName: "Civics: Outcomes of Democracy",
+                link: "https://ncert.nic.in/textbook/pdf/gsso517.pdf",
+              },
+              {
+                chName: "Economics: Development",
+                link: "https://ncert.nic.in/textbook/pdf/gsso518.pdf",
+              },
+              {
+                chName: "Economics: Sectors of the Indian Economy",
+                link: "https://ncert.nic.in/textbook/pdf/gsso519.pdf",
+              },
+              {
+                chName: "Economics: Money and Credit",
+                link: "https://ncert.nic.in/textbook/pdf/gsso520.pdf",
+              },
+              {
+                chName: "Economics: Globalisation and the Indian Economy",
+                link: "https://ncert.nic.in/textbook/pdf/gsso521.pdf",
+              },
+              {
+                chName: "Economics: Consumer Rights",
+                link: "https://ncert.nic.in/textbook/pdf/gsso522.pdf",
+              },
+            ],
+          },
+        ],
+        // ========== MATHS STREAM CLASS 11 ==========
+        "11_Maths": [
+          {
+            name: "Mathematics",
+            img: "https://ncert.nic.in/textbook/pdf/khmh1cc.jpg",
+            full: "https://ncert.nic.in/textbook/pdf/khmh1.pdf",
+            chapters: [
+              {
+                chName: "1: Sets (Narendra Verma)",
+                link: "https://ncert.nic.in/textbook/pdf/khmh101.pdf",
+              },
+              {
+                chName: "2: Relations & Functions",
+                link: "https://ncert.nic.in/textbook/pdf/khmh102.pdf",
+              },
+              {
+                chName: "3: Trigonometric Functions",
+                link: "https://ncert.nic.in/textbook/pdf/khmh103.pdf",
+              },
+              {
+                chName: "4: Mathematical Induction",
+                link: "https://ncert.nic.in/textbook/pdf/khmh104.pdf",
+              },
+              {
+                chName: "5: Complex Numbers",
+                link: "https://ncert.nic.in/textbook/pdf/khmh105.pdf",
+              },
+              {
+                chName: "6: Linear Inequalities",
+                link: "https://ncert.nic.in/textbook/pdf/khmh106.pdf",
+              },
+              {
+                chName: "7: Permutations & Combinations",
+                link: "https://ncert.nic.in/textbook/pdf/khmh107.pdf",
+              },
+              {
+                chName: "8: Binomial Theorem",
+                link: "https://ncert.nic.in/textbook/pdf/khmh108.pdf",
+              },
+              {
+                chName: "9: Sequences & Series",
+                link: "https://ncert.nic.in/textbook/pdf/khmh109.pdf",
+              },
+              {
+                chName: "10: Straight Lines",
+                link: "https://ncert.nic.in/textbook/pdf/khmh110.pdf",
+              },
+              {
+                chName: "11: Conic Sections",
+                link: "https://ncert.nic.in/textbook/pdf/khmh111.pdf",
+              },
+              {
+                chName: "12: 3D Geometry",
+                link: "https://ncert.nic.in/textbook/pdf/khmh112.pdf",
+              },
+              {
+                chName: "13: Limits & Derivatives",
+                link: "https://ncert.nic.in/textbook/pdf/khmh113.pdf",
+              },
+              {
+                chName: "14: Mathematical Reasoning",
+                link: "https://ncert.nic.in/textbook/pdf/khmh114.pdf",
+              },
+              {
+                chName: "15: Statistics",
+                link: "https://ncert.nic.in/textbook/pdf/khmh115.pdf",
+              },
+              {
+                chName: "16: Probability",
+                link: "https://ncert.nic.in/textbook/pdf/khmh116.pdf",
+              },
+            ],
+          },
+        ],
+
+        // ========== CLASS 11 PHYSICS ==========
+        "11_Physics": [
+          {
+            // नोट: मैंने इसे '11_Physics' कर दिया है ताकि कोड इसे ढूँढ सके
+            name: "Physics Part-I & II",
+            img: "https://ncert.nic.in/textbook/pdf/khph1cc.jpg",
+            full: "https://ncert.nic.in/textbook/pdf/khph1.pdf",
+            chapters: [
+              {
+                chName: "1: Physical World",
+                link: "https://ncert.nic.in/textbook/pdf/khph101.pdf",
+              },
+              {
+                chName: "2: Units & Measurements",
+                link: "https://ncert.nic.in/textbook/pdf/khph102.pdf",
+              },
+              {
+                chName: "3: Motion in Straight Line",
+                link: "https://ncert.nic.in/textbook/pdf/khph103.pdf",
+              },
+              {
+                chName: "4: Motion in Plane",
+                link: "https://ncert.nic.in/textbook/pdf/khph104.pdf",
+              },
+              {
+                chName: "5: Laws of Motion",
+                link: "https://ncert.nic.in/textbook/pdf/khph105.pdf",
+              },
+              {
+                chName: "6: Work, Energy & Power",
+                link: "https://ncert.nic.in/textbook/pdf/khph106.pdf",
+              },
+              {
+                chName: "7: System of Particles",
+                link: "https://ncert.nic.in/textbook/pdf/khph107.pdf",
+              },
+              {
+                chName: "8: Gravitation",
+                link: "https://ncert.nic.in/textbook/pdf/khph108.pdf",
+              },
+              {
+                chName: "9: Mechanical Properties of Solids",
+                link: "https://ncert.nic.in/textbook/pdf/khph201.pdf",
+              },
+              {
+                chName: "10: Mechanical Properties of Fluids",
+                link: "https://ncert.nic.in/textbook/pdf/khph202.pdf",
+              },
+              {
+                chName: "11: Thermal Properties of Matter",
+                link: "https://ncert.nic.in/textbook/pdf/khph203.pdf",
+              },
+              {
+                chName: "12: Thermodynamics",
+                link: "https://ncert.nic.in/textbook/pdf/khph204.pdf",
+              },
+              {
+                chName: "13: Kinetic Theory",
+                link: "https://ncert.nic.in/textbook/pdf/khph205.pdf",
+              },
+              {
+                chName: "14: Oscillations",
+                link: "https://ncert.nic.in/textbook/pdf/khph206.pdf",
+              },
+              {
+                chName: "15: Waves",
+                link: "https://ncert.nic.in/textbook/pdf/khph207.pdf",
+              },
+            ],
+          },
+        ],
+
+// CLASS 11 Chemistry - Part 1 and Part 2
+"11_Chemistry": [
+  {
+    name: "Chemistry Part - 1 (Class 11)",
+    img: "https://ncert.nic.in/textbook/pdf/kech1cc.jpg", // Part 1 ki cover image
+    full: "https://ncert.nic.in/textbook/pdf/kech1ps.pdf", // Full Book download link,
+            chapters: [
+              {
+                chName: "1: Some Basic Concepts Of Chemistry",
+                link: "https://raw.githubusercontent.com/study-material-hub/study-hub/main/class11/chemistry_ch1.pdf",
+              },
+              {
+                chName: "2: Structure of Atom",
+                link: "https://raw.githubusercontent.com/study-material-hub/study-hub/main/class11/chemistry_ch2.pdf",
+              },
+              {
+                chName: "3: Classification of Elements and Periodicity In Properties",
+                link: "https://raw.githubusercontent.com/study-material-hub/study-hub/main/class11/chemistry_ch3.pdf",
+              },
+              {
+                chName: "4: Chemical Bonding and Molecular Structure",
+                link: "https://raw.githubusercontent.com/study-material-hub/study-hub/main/class11/chemistry_ch4.pdf",
+              },
+              {
+                chName: "5: Thermodynamics",
+                link: "https://raw.githubusercontent.com/study-material-hub/study-hub/main/class11/chemistry_ch5.pdf",
+              },
+              {
+                chName: "6: Equilibrium",
+                link: "https://raw.githubusercontent.com/study-material-hub/study-hub/main/class11/chemistry_ch6.pdf",
+              },
+     // Isi tarah Part 1 ke baki chapters add karein...
+    ]
+  },
+  {
+    name: "Chemistry Part - 2 (Class 11)",
+    img: "https://ncert.nic.in/textbook/pdf/kech2cc.jpg", // Part 2 ki cover image
+    full: "https://ncert.nic.in/textbook/pdf/kech2ps.pdf", // Full Book download link
+    chapters: [
+              {
+                chName: "1: Redox Reactions",
+                link: "https://raw.githubusercontent.com/study-material-hub/study-hub/main/class11/part2_chemistry_ch1.pdf",
+              },
+              {
+                chName: "2: Organic Chemistry-Some Basic Principles and Techniques",
+                link: "https://raw.githubusercontent.com/study-material-hub/study-hub/main/class11/part2_chemistry_ch2.pdf",
+              },
+              {
+                chName: "3: Hydrocarbons",
+                link: "https://raw.githubusercontent.com/study-material-hub/study-hub/main/class11/part2_chemistry_ch3.pdf",
+              },
+              {
+                chName: "3: Answer",
+                link: "https://raw.githubusercontent.com/study-material-hub/study-hub/main/class11/chemistry_part2_answersheet.pdf",
+              },
+            ],
+          },
+        ],
+
+        // ========== CLASS 11 BIOLOGY ==========
+        "11_Biology": [
+          {
+            name: "Biology",
+            img: "https://raw.githubusercontent.com/study-material-hub/study-hub/main/class11/bio_biology_11.jpg",
+            full: "https://ncert.nic.in/textbook/pdf/khbo1.pdf",
+            chapters: [
+              {
+                chName: "1: The Living World",
+                link: "https://raw.githubusercontent.com/study-material-hub/study-hub/main/class11/biology_ch1.pdf",
+              },
+              {
+                chName: "2: Biological Classification",
+                link: "https://raw.githubusercontent.com/study-material-hub/study-hub/main/class11/biology_ch2.pdf",
+              },
+              {
+                chName: "3: Plant Kingdom",
+                link: "https://raw.githubusercontent.com/study-material-hub/study-hub/main/class11/biology_ch3.pdf",
+              },
+              {
+                chName: "4: Animal Kingdom",
+                link: "https://raw.githubusercontent.com/study-material-hub/study-hub/main/class11/biology_ch4.pdf",
+              },
+              {
+                chName: "5: Morphology of Flowering Plants",
+                link: "https://raw.githubusercontent.com/study-material-hub/study-hub/main/class11/biology_ch5.pdf",
+              },
+              {
+                chName: "6: Anatomy of Flowering Plants",
+                link: "https://raw.githubusercontent.com/study-material-hub/study-hub/main/class11/biology_ch6.pdf",
+              },
+              {
+                chName: "7: Structural Organisation in Animals",
+                link: "https://raw.githubusercontent.com/study-material-hub/study-hub/main/class11/biology_ch7.pdf",
+              },
+              {
+                chName: "8: Cell: Unit of Life",
+                link: "https://raw.githubusercontent.com/study-material-hub/study-hub/main/class11/biology_ch8.pdf",
+              },
+              {
+                chName: "9: Biomolecules",
+                link: "https://raw.githubusercontent.com/study-material-hub/study-hub/main/class11/biology_ch9.pdf",
+              },
+              {
+                chName: "10: Cell Cycle & Division",
+                link: "https://raw.githubusercontent.com/study-material-hub/study-hub/main/class11/biology_ch10.pdf",
+              },
+                {
+                chName: "11: Photosynthesis in Higher Plants",
+                link: "https://raw.githubusercontent.com/study-material-hub/study-hub/main/class11/biology_ch11.pdf",
+              },
+              {
+                chName: "12: Respiration in Plants",
+                link: "https://raw.githubusercontent.com/study-material-hub/study-hub/main/class11/biology_ch12.pdf",
+              },
+              {
+                chName: "13: Plant Growth and Development",
+                link: "https://raw.githubusercontent.com/study-material-hub/study-hub/main/class11/biology_ch13.pdf",
+              },
+              {
+                chName: "14: Breathing and Exchange of Gases",
+                link: "https://raw.githubusercontent.com/study-material-hub/study-hub/main/class11/biology_ch14.pdf",
+              },
+              {
+                chName: "15: Body Fluids and Circulation",
+                link: "https://raw.githubusercontent.com/study-material-hub/study-hub/main/class11/biology_ch15.pdf",
+              },
+              {
+                chName: "16: Excretory Products and their Elimination",
+                link: "https://raw.githubusercontent.com/study-material-hub/study-hub/main/class11/biology_ch16.pdf",
+              },
+              {
+                chName: "17: Locomotion and Movement",
+                link: "https://raw.githubusercontent.com/study-material-hub/study-hub/main/class11/biology_ch17.pdf",
+              },
+              {
+                chName: "18: Neural Control and Coordination",
+                link: "https://raw.githubusercontent.com/study-material-hub/study-hub/main/class11/biology_ch18.pdf",
+              },
+              {
+                chName: "19: Chemical Coordination and Integration",
+                link: "https://raw.githubusercontent.com/study-material-hub/study-hub/main/class11/biology_ch19.pdf",
+              },
+            ],
+          },
+        ],
+
+        // ========== CLASS 11 ENGLISH ==========
+        "11_English": [
+          {
+            name: "Hornbill",
+            img: "https://ncert.nic.in/textbook/pdf/kehb1cc.jpg",
+            full: "https://ncert.nic.in/textbook/pdf/kehb1.pdf",
+            chapters: [
+              {
+                chName: "1: The Portrait of a Lady",
+                link: "https://ncert.nic.in/textbook/pdf/kehb101.pdf",
+              },
+              {
+                chName: "2: We're Not Afraid to Die",
+                link: "https://ncert.nic.in/textbook/pdf/kehb102.pdf",
+              },
+              {
+                chName: "3: Discovering Tut",
+                link: "https://ncert.nic.in/textbook/pdf/kehb103.pdf",
+              },
+              {
+                chName: "4: Landscape of the Soul",
+                link: "https://ncert.nic.in/textbook/pdf/kehb104.pdf",
+              },
+              {
+                chName: "5: The Ailing Planet",
+                link: "https://ncert.nic.in/textbook/pdf/kehb105.pdf",
+              },
+              {
+                chName: "6: The Browning Version",
+                link: "https://ncert.nic.in/textbook/pdf/kehb106.pdf",
+              },
+              {
+                chName: "7: The Adventure",
+                link: "https://ncert.nic.in/textbook/pdf/kehb107.pdf",
+              },
+              {
+                chName: "8: Silk Road",
+                link: "https://ncert.nic.in/textbook/pdf/kehb108.pdf",
+              },
+            ],
+          },
+        ],
+
+        // ========== CLASS 11 HINDI ==========
+"11_Hindi": [
+  {
+    name: "Aroh (आरोह भाग-1)",
+    img: "https://raw.githubusercontent.com/study-material-hub/study-hub/main/hindi_aroh_11.jpg",
+    full: "https://raw.githubusercontent.com/study-material-hub/study-hub/main/class11/Hindi%20Aaroh.zip",
+    chapters: [
+      // गद्य खंड (Prose)
+      {
+        chName: "1: नमक का दरोगा (प्रेमचंद)",
+        link: "https://raw.githubusercontent.com/study-material-hub/study-hub/main/class11/hindi_ch1.pdf",
+      },
+      {
+        chName: "2: मियाँ नसीरुद्दीन (कृष्णा सोबती)",
+        link: "https://raw.githubusercontent.com/study-material-hub/study-hub/main/class11/hindi_ch2.pdf",
+      },
+      {
+        chName: "3: अपू के साथ ढाई साल (सत्यजित राय)",
+        link: "https://raw.githubusercontent.com/study-material-hub/study-hub/main/class11/hindi_ch3.pdf",
+      },
+      {
+        chName: "4: विदाई-संभाषण (बालमुकुंद गुप्त)",
+        link: "https://raw.githubusercontent.com/study-material-hub/study-hub/main/class11/hindi_ch4.pdf",
+      },
+      {
+        chName: "5: गलता लोहा (शेखर जोशी)",
+        link: "https://raw.githubusercontent.com/study-material-hub/study-hub/main/class11/hindi_ch5.pdf",
+      },
+
+      {
+        chName: "6: रजनी (मन्नू भंडारी)",
+        link: "https://raw.githubusercontent.com/study-material-hub/study-hub/main/class11/hindi_ch6.pdf",
+      },
+      {
+        chName: "7: जामुन का पेड़ (कृष्ण चंदर)",
+        link: "https://raw.githubusercontent.com/study-material-hub/study-hub/main/class11/hindi_ch7.pdf",
+      },
+      {
+        chName: "8: भारत माता (जवाहरलाल नेहरू)",
+        link: "https://raw.githubusercontent.com/study-material-hub/study-hub/main/class11/hindi_ch8.pdf",
+      },
+      {
+        chName: "9: आत्मा का ताप (सैयद हैदर रज़ा)",
+        link: "https://raw.githubusercontent.com/study-material-hub/study-hub/main/class11/hindi_ch9.pdf",
+      },
+      // काव्य खंड (Poetry)
+      {
+        chName: "10: हम तौ एक एक करि जाणा (कबीर)",
+        link: "https://raw.githubusercontent.com/study-material-hub/study-hub/main/class11/hindi_ch10.pdf",
+      },
+      {
+        chName: "11: मेरे तो गिरधर गोपाल (मीराबाई)",
+        link: "https://raw.githubusercontent.com/study-material-hub/study-hub/main/class11/hindi_ch11.pdf",
+      },
+      {
+        chName: "12: घर की याद (भवानी प्रसाद मिश्र)",
+        link: "https://raw.githubusercontent.com/study-material-hub/study-hub/main/class11/hindi_ch12.pdf",
+      },
+      {
+        chName: "13: चंपा काले-काले अच्छर नहीं चीन्हती (त्रिलोचन)",
+        link: "https://raw.githubusercontent.com/study-material-hub/study-hub/main/class11/hindi_ch13.pdf",
+      },
+      {
+        chName: "14: दुष्यंत कुमार की गज़लें",
+        link: "https://raw.githubusercontent.com/study-material-hub/study-hub/main/hindi_ch14.pdf",
+      },
+      {
+        chName: "15: हे भूख! मत मचल (अक्क महादेवी)",
+        link: "https://raw.githubusercontent.com/study-material-hub/study-hub/main/hindi_ch15.pdf",
+      },
+      {
+        chName: "16: सबसे खतरनाक (पाश)",
+        link: "https://raw.githubusercontent.com/study-material-hub/study-hub/main/hindi_ch16.pdf",
+      },
+      {
+        chName: "17: आओ मिलकर बचाएँ (निर्मला पुतुल)",
+        link: "https://raw.githubusercontent.com/study-material-hub/study-hub/main/hindi_ch17.pdf",
+      }
+    ],
+  },
+],
+
+        // ========== CLASS 12 MATHS ==========
+        "12_Maths": [
+          {
+            // इसे भी एक 'key' में जोड़ दिया है
+            name: "Mathematics Part-I & II",
+            img: "https://ncert.nic.in/textbook/pdf/lhmh1cc.jpg",
+            full: "https://ncert.nic.in/textbook/pdf/lhmh1.pdf",
+            chapters: [
+              {
+                chName: "1: Relations & Functions",
+                link: "https://ncert.nic.in/textbook/pdf/lhmh101.pdf",
+              },
+              {
+                chName: "2: Inverse Trigonometric Functions",
+                link: "https://ncert.nic.in/textbook/pdf/lhmh102.pdf",
+              },
+              {
+                chName: "3: Matrices",
+                link: "https://ncert.nic.in/textbook/pdf/lhmh103.pdf",
+              },
+              {
+                chName: "4: Determinants",
+                link: "https://ncert.nic.in/textbook/pdf/lhmh104.pdf",
+              },
+              {
+                chName: "5: Continuity & Differentiability",
+                link: "https://ncert.nic.in/textbook/pdf/lhmh105.pdf",
+              },
+              {
+                chName: "6: Application of Derivatives",
+                link: "https://ncert.nic.in/textbook/pdf/lhmh106.pdf",
+              },
+              {
+                chName: "7: Integrals",
+                link: "https://ncert.nic.in/textbook/pdf/lhmh201.pdf",
+              },
+              {
+                chName: "8: Application of Integrals",
+                link: "https://ncert.nic.in/textbook/pdf/lhmh202.pdf",
+              },
+              {
+                chName: "9: Differential Equations",
+                link: "https://ncert.nic.in/textbook/pdf/lhmh203.pdf",
+              },
+              {
+                chName: "10: Vector Algebra",
+                link: "https://ncert.nic.in/textbook/pdf/lhmh204.pdf",
+              },
+              {
+                chName: "11: 3D Geometry",
+                link: "https://ncert.nic.in/textbook/pdf/lhmh205.pdf",
+              },
+              {
+                chName: "12: Linear Programming",
+                link: "https://ncert.nic.in/textbook/pdf/lhmh206.pdf",
+              },
+              {
+                chName: "13: Probability",
+                link: "https://ncert.nic.in/textbook/pdf/lhmh207.pdf",
+              },
+            ],
+          },
+        ],
+      }; // <--- यहाँ bookDatabase खत्म होता है।
+      function showClasses(category) {
+        selCategory = category;
+        hideAll();
+        document.getElementById("classGridArea").style.display = "block";
+        const grid = document.getElementById("classGrid");
+        grid.innerHTML = "";
+        for (let i = 1; i <= 12; i++) {
+          const btn = document.createElement("div");
+          btn.className = "card bold-btn";
+          btn.innerHTML = `CLASS ${i}`;
+          btn.onclick = () => {
+            selClass = i;
+            if (i >= 11) {
+              hideAll();
+              document.getElementById("streamGridArea").style.display = "block";
+            } else {
+              loadSubjects("general");
+            }
+          };
+          grid.appendChild(btn);
+        }
+      }
+
+      function loadSubjects(stream) {
+        hideAll();
+        document.getElementById("subjectGridArea").style.display = "block";
+        const grid = document.getElementById("subjectGrid");
+        grid.innerHTML = "";
+
+        document.getElementById("subBackBtn").onclick = () => {
+          selClass >= 11
+            ? goBack("subjectGridArea", "streamGridArea")
+            : goBack("subjectGridArea", "classGridArea");
+        };
+
+        let list;
+        if (stream === "maths_stream") {
+          list = ["Maths", "Physics", "Chemistry", "English", "Hindi"];
+        } else if (stream === "biology_stream") {
+          list = ["Biology", "Physics", "Chemistry", "English", "Hindi"];
+        } else {
+          list = subjectsByClass[selClass] || ["Hindi", "English", "Maths"];
+        }
+
+        list.forEach((sub) => {
+          const btn = document.createElement("div");
+          btn.className = "card bold-btn";
+          btn.innerHTML = sub.toUpperCase();
+          btn.onclick = () => showBooksList(sub);
+          grid.appendChild(btn);
+        });
+      }
+
+      function showBooksList(subject) {
+        hideAll();
+        document.getElementById("bookListArea").style.display = "block";
+        const grid = document.getElementById("bookGrid");
+        grid.innerHTML = "";
+
+        const key = selClass + "_" + subject;
+        const books = bookDatabase[key] || [];
+
+        if (!books.length) {
+          const msg = document.createElement("div");
+          msg.style.padding = "10px";
+          msg.textContent = "Data coming soon...";
+          grid.appendChild(msg);
+          return;
+        }
+
+        books.forEach((book) => {
+          const card = document.createElement("div");
+          card.className = "card book-card";
+          card.innerHTML = `<img src="${book.img}"><span>${book.name}</span>`;
+          card.onclick = () => openChapterView(book);
+          grid.appendChild(card);
+        });
+      }
+
+      function openChapterView(book) {
+        hideAll();
+        document.getElementById("chapterViewArea").style.display = "block";
+        document.getElementById("displayBookName").innerText = book.name;
+        document.getElementById("displayClassInfo").innerText =
+          "Class " +
+          selClass +
+          " | " +
+          (selCategory === "books" ? "NCERT PDF" : "NCERT Solution");
+        document.getElementById("bookCover").src = book.img || "logo.png";
+        document.getElementById("fullBookLink").href = book.full || "#";
+        document.getElementById("chapterBackBtn").onclick = () =>
+          goBack("chapterViewArea", "bookListArea");
+
+        const list = document.getElementById("chapterList");
+        list.innerHTML = "";
+
+        (book.chapters || []).forEach((ch) => {
+          const item = document.createElement("div");
+          item.className = "chapter-item";
+
+          if (typeof ch === "object") {
+            item.innerHTML = `
+        <span class="chapter-name">${ch.chName}</span>
+        <div style="display:flex; gap:10px;">
+          <a href="${ch.link}" target="_blank" class="download-link" style="background:#16a34a;">OPEN</a>
+          <a href="${ch.link}" target="_blank" class="download-link">PDF</a>
+        </div>`;
+          } else {
+            item.innerHTML = `
+        <span class="chapter-name">${ch}</span>
+        <a href="${book.full}" target="_blank" class="download-link">
+          <i class="fa-solid fa-download"></i> ${selCategory === "books" ? "PDF" : "Solution"}
+        </a>`;
+          }
+          list.appendChild(item);
+        });
+      }
+
+      function toggleDarkMode() {
+        const body = document.getElementById("bodyTag");
+        const icon = document.getElementById("modeIcon");
+        const isDark = body.classList.contains("dark");
+
+        if (isDark) {
+          body.classList.remove("dark");
+          icon.classList.remove("fa-sun");
+          icon.classList.add("fa-moon");
+        } else {
+          body.classList.add("dark");
+          icon.classList.remove("fa-moon");
+          icon.classList.add("fa-sun");
+        }
+      }
+
+      function searchItems(selector, id) {
+        let input = document.getElementById(id).value.toLowerCase();
+        document.querySelectorAll(selector).forEach((c) => {
+          const match = c.innerText.toLowerCase().includes(input);
+          c.style.display = match ? "" : "none";
+        });
+      }
+
+      function hideAll() {
+        [
+          "mainGrid",
+          "mainSearch",
+          "classGridArea",
+          "streamGridArea",
+          "subjectGridArea",
+          "bookListArea",
+          "chapterViewArea",
+        ].forEach((id) => (document.getElementById(id).style.display = "none"));
+      }
+      function goBack(curr, tar, s = false) {
+        document.getElementById(curr).style.display = "none";
+        document.getElementById(tar).style.display = "block";
+        if (s) document.getElementById("mainSearch").style.display = "block";
+      }
+      function openAdmin() {
+        document.getElementById("adminModal").style.display = "block";
+      }
+      function closeAdmin() {
+        document.getElementById("adminModal").style.display = "none";
+      }
+      function toggleFeedback(e) {
+        if (e.target.id === "feedbackText" || e.target.id === "submitBtn")
+          return;
+        const area = document.getElementById("feedbackArea");
+        area.style.display = area.style.display === "block" ? "none" : "block";
+      }
+    </script>
+  </body>
+</html>
